@@ -50,7 +50,8 @@ zstd/gzip compression, and caches fingerprinted assets for a year.
 site/                      Hugo project (Hugo 0.147, built inside Docker; no local install needed)
   hugo.toml
   content/dungeons/<slug>/ one page bundle per guide: index.md (structured YAML) + images/
-  data/expansions/         which guides each expansion section lists, and in what order
+  data/expansions/         which guides each expansion section lists (the home page sorts them by level)
+  data/levels.yaml         recommended level range for each guide, per expansion section
   layouts/                 templates (home, guide page, 404, partials)
   assets/css/main.css      all styles
   assets/js/site.js        theme toggle, search, route-map stepper, copy-to-chat buttons
@@ -112,7 +113,13 @@ downloaded yet. To add an expansion:
    `tools/capture-timestamps.txt`).
 2. Convert it: `python3 -I tools/convert_to_hugo.py <dir> site <id> "<Name>"`. This writes
    the page bundles and `site/data/expansions/<id>.yaml`.
-3. Rebuild. A guide that's in more than one expansion (Deadmines and Shadowfang Keep are
+3. Add the expansion's level ranges to `site/data/levels.yaml`. For dungeons that are in
+   WoW Forever, use its Group Finder's range (the source is noted at the top of the file).
+   For later expansions, the original site's
+   [2017 home page](https://web.archive.org/web/20170622163054/http://quickdungeon.com/)
+   lists the retail ranges up to Legion. If a guide has no range, the dev server prints a
+   warning and the Docker build fails, naming the guide.
+4. Rebuild. A guide that's in more than one expansion (Deadmines and Shadowfang Keep are
    listed under both Classic and Cataclysm) only needs one page bundle; list its slug in
    each expansion's data file.
 

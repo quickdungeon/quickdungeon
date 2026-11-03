@@ -26,9 +26,21 @@
   {{- with $exp.blurb }}
   <p class="expansion-blurb">{{ . }}{{ with $exp.credit }} Maps by <a href="{{ .url }}">{{ .name }}</a>.{{ end }}</p>
   {{- end }}
+  {{- /* Sorted by level (lowest minimum first, then lowest maximum); guides with the same
+         range keep their order from the data file. A guide without a range goes last. */}}
+  {{- $levelsFor := index site.Data.levels $exp.id | default dict }}
+  {{- $rows := slice }}
+  {{- range $i, $slug := $exp.guides }}
+    {{- $levels := index $levelsFor $slug }}
+    {{- if not $levels }}{{ warnf "data/levels.yaml has no level range for %q under %q" $slug $exp.id }}{{ end }}
+    {{- $parts := split (string ($levels | default "999")) "–" }}
+    {{- $key := printf "%03d-%03d-%03d" (int (index $parts 0)) (int (index $parts (sub (len $parts) 1))) $i }}
+    {{- $rows = $rows | append (dict "slug" $slug "levels" $levels "key" $key) }}
+  {{- end }}
   <ul class="dungeons">
-  {{- range $exp.guides }}
-    {{- $slug := . }}
+  {{- range sort $rows "key" }}
+    {{- $slug := .slug }}
+    {{- $levels := .levels }}
     {{- with site.GetPage (printf "/dungeons/%s" $slug) }}
       {{- $words := slice .Title $exp.name }}
       {{- with .Params.zone }}{{ $words = $words | append . }}{{ end }}
@@ -42,7 +54,9 @@
         </span>
         <span class="dungeon-name">{{ .Title }}</span>
         <span class="dungeon-zone">{{ if .Params.zone }}{{ .Params.zone }}, {{ .Params.continent }}{{ else }}{{ .Params.list_note | default "Map and boss list only" }}{{ end }}</span>
-        <span class="dungeon-count">{{ len .Params.bosses }} bosses</span>
+        {{- with $levels }}
+        <span class="dungeon-levels"><span class="dungeon-levels-label">Level</span> {{ . }}</span>
+        {{- end }}
       </a>
     </li>
     {{- else }}

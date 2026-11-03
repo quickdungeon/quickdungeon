@@ -191,7 +191,7 @@ kbd { font: inherit; }
 .dungeon-link {
   display: grid;
   grid-template-columns: 7.5rem minmax(0, 1fr) auto;
-  grid-template-areas: "thumb name count" "thumb zone count";
+  grid-template-areas: "thumb name levels" "thumb zone levels";
   column-gap: 1rem; align-items: center;
   padding: 0.6rem; margin-inline: -0.6rem;
   border-radius: var(--radius);
@@ -208,7 +208,8 @@ kbd { font: inherit; }
   font-size: 1.125rem; line-height: 1.2; letter-spacing: -0.01em;
 }
 .dungeon-zone { grid-area: zone; align-self: start; color: var(--muted); font-size: 0.9375rem; }
-.dungeon-count { grid-area: count; color: var(--muted); font-size: 0.875rem; white-space: nowrap; }
+.dungeon-levels { grid-area: levels; color: var(--text); font-size: 0.875rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dungeon-levels-label { color: var(--muted); }
 .no-results { margin-top: 1.5rem; color: var(--muted); }
 
 /* ---- guide ----------------------------------------------------------------- */
@@ -344,9 +345,9 @@ kbd { font: inherit; }
 
 /* phones: tighter boss rows, copy button under the line */
 @media (max-width: 560px) {
-  .dungeon-link { grid-template-columns: 5.5rem minmax(0, 1fr); grid-template-areas: "thumb name" "thumb zone"; }
+  .dungeon-link { grid-template-columns: 5.5rem minmax(0, 1fr); grid-template-rows: 1fr auto 1fr; grid-template-areas: "thumb name" "thumb zone" "thumb levels"; }
   .dungeon-thumb img { width: 5.5rem; }
-  .dungeon-count { display: none; }
+  .dungeon-levels { align-self: start; }
   .boss { grid-template-columns: 3.25rem minmax(0, 1fr); gap: 0.75rem; }
   .boss-portrait { width: 3.25rem; height: 3.25rem; }
   .chat { grid-template-columns: 1fr; }
