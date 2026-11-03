@@ -1,5 +1,5 @@
 ---
-title: "Dire Maul: Capital Gardens"
+title: "Dire Maul (West)"
 url: "/dire-maul-capital-gardens/"
 expansions:
   - "classic"

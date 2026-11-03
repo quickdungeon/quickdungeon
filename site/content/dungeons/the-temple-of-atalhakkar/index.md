@@ -1,5 +1,5 @@
 ---
-title: "The Temple of Atal’Hakkar"
+title: "Sunken Temple"
 url: "/the-temple-of-atalhakkar/"
 expansions:
   - "classic"

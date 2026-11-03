@@ -1,5 +1,5 @@
 ---
-title: "Stratholme: Main Gate"
+title: "Stratholme (Main Gate)"
 url: "/stratholme-main-gate/"
 expansions:
   - "classic"
@@ -32,17 +32,17 @@ bosses:
     tactics:
       - "Deals physical damage. Ravenous Claw hits current target & heals boss. At 50% health enrages increasing damage & speed."
   - number: 4
-    name: "Commander Malor"
+    name: "Malor the Zealous"
     image: "images/commander-malor-model.jpg"
     tactics:
       - "Interrupt Shadow Bolt Volley. Inflicts physical damage. Head Crack reduces a players stamina."
   - number: 5
-    name: "Willey Hopebreaker"
+    name: "Cannon Master Willey"
     image: "images/willey-hopebreaker-model.jpg"
     tactics:
       - "Summons rifleman adds, keep on top of them (summons more). Dps pick up Cannonball Stacks to fire the Cannons at the adds. Inflicts physical damage to players."
   - number: 6
-    name: "Instructor Galford"
+    name: "Archivist Galford"
     image: "images/instructor-galeford-model.jpg"
     tactics:
       - "Fire Nova inflicts fire damage to all nearby players. Inflicts a fire damage dot on current target. Burning Winds inflicts fire damage to current target & stuns."

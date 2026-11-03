@@ -1,5 +1,5 @@
 ---
-title: "Dire Maul: Warpwood Quarter"
+title: "Dire Maul (East)"
 url: "/dire-maul-warpwood-quarter/"
 expansions:
   - "classic"

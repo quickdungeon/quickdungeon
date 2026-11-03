@@ -2,8 +2,8 @@
 # Keyed by expansion section (the files in data/expansions/) and then guide slug, because a
 # guide listed in two sections can have a different range in each.
 #
-# Source: WoW Forever's in-game Group Finder, i.e. the GroupFinderActivity table's MinLevel
-# to MaxLevelSuggestion (wowf build 1.60.1.70707, CSV from
+# Source: WoW Forever's Group Finder listing board (it has no Dungeon Finder queue), i.e. the
+# GroupFinderActivity table's MinLevel to MaxLevelSuggestion (wowf build 1.60.1.70707, CSV from
 # https://wago.tools/db2/GroupFinderActivity/csv?build=1.60.1.70707).
 # Where a guide covers a retail split or merge of classic wings, the range spans the
 # Group Finder entries it covers (noted below).

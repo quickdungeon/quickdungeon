@@ -1,5 +1,5 @@
 ---
-title: "Stratholme: Service Entrance"
+title: "Stratholme (Service Gate)"
 url: "/stratholme-service-entrance/"
 expansions:
   - "classic"
@@ -43,7 +43,7 @@ bosses:
     tactics:
       - "Knocks back current target & stuns. All nearby players take physical damage during Trample."
   - number: 6
-    name: "Lord Aurius Rivendare"
+    name: "Baron Rivendare"
     image: "images/lord-aurius-rivendare-model.jpg"
     tactics:
       - "Deals physical & shadow damage to players. Aoe the Mindless Skeletons. Heals himself with any remaining Mindless Skeletons after 12 sec."

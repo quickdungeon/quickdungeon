@@ -1,5 +1,5 @@
 ---
-title: "Dire Maul: Gordok Commons"
+title: "Dire Maul (North)"
 url: "/dire-maul-gordok-commons/"
 expansions:
   - "classic"

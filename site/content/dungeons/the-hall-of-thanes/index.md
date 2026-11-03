@@ -1,18 +1,18 @@
 ---
-title: "The Hall of Thanes"
+title: "Hall of Thanes"
 url: "/the-hall-of-thanes/"
 expansions:
   - "forever"
 status: "overview"
 summary: "New in WoW Forever. The entrance location isn’t in the game data yet."
-description: "Map and boss list for The Hall of Thanes, a new 5-player dungeon in WoW Forever."
+description: "Map and boss list for Hall of Thanes, a new 5-player dungeon in WoW Forever."
 thumbnail: "images/the-hall-of-thanes-map-santiago-reyes.jpg"
 route:
   - label: "Map"
     blocks:
       - callout: "The tank route hasn’t been drawn on this map yet."
       - image: "images/the-hall-of-thanes-map-santiago-reyes.jpg"
-        alt: "Map of The Hall of Thanes by Santiago Reyes"
+        alt: "Map of Hall of Thanes by Santiago Reyes"
         credit:
           name: "Santiago Reyes"
           url: "https://asguevara433.wixsite.com/srmaps"
