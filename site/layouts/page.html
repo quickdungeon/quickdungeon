@@ -1,0 +1,72 @@
+{{ define "main" }}
+{{- $p := . }}
+{{- $maps := .Params.route }}
+<article class="guide">
+  <header class="guide-head">
+    <h1>{{ .Title }}</h1>
+    <p class="guide-where">
+      {{ .Params.zone }}, {{ .Params.continent }}.
+      {{- with .Params.coords }}
+      {{ with .label }}{{ strings.FirstUpper . }}{{ else }}Entrance{{ end }} at <span class="coords">{{ printf "%.1f, %.1f" .x .y }}</span>.
+      {{- end }}
+    </p>
+  </header>
+
+  {{- with .Params.entrance }}
+  <details class="entrance">
+    <summary>How to find the entrance</summary>
+    <div class="entrance-body">
+      {{ partial "blocks.html" (dict "page" $p "blocks" . "alt" (printf "On the way to the %s entrance" $p.Title)) }}
+    </div>
+  </details>
+  {{- end }}
+
+  <div class="guide-body">
+    <section class="route" aria-labelledby="route-title">
+      <h2 id="route-title">Route</h2>
+      <div class="route-maps" data-count="{{ len $maps }}">
+        {{- range $i, $m := $maps }}
+        <section class="route-step" id="map-{{ add $i 1 }}" data-label="{{ .label }}">
+          <h3 class="route-step-label">{{ .label }}</h3>
+          {{ partial "blocks.html" (dict "page" $p "blocks" .blocks "alt" (printf "%s route, %s of %d" $p.Title (lower .label) (len $maps)) "loading" (cond (eq $i 0) "eager" "lazy")) }}
+        </section>
+        {{- end }}
+      </div>
+    </section>
+
+    <section class="bosses" aria-labelledby="bosses-title">
+      <h2 id="bosses-title">Bosses</h2>
+      <p class="bosses-hint">Numbers match the boss markers on the route maps.</p>
+      <ol class="boss-list">
+        {{- range $i, $b := .Params.bosses }}
+        <li class="boss" id="boss-{{ add $i 1 }}">
+          {{- with .image }}{{ partial "img.html" (dict "page" $p "src" . "alt" "" "class" "boss-portrait") }}{{ end }}
+          <div class="boss-body">
+            <h3 class="boss-name">
+              {{- if isset . "number" }}<span class="boss-n">{{ .number }}</span>{{ end }}
+              <span>{{ .name }}</span>
+              {{- with .tag }}<span class="boss-tag">{{ if eq . "optional" }}Optional{{ else }}Heroic only{{ end }}</span>{{ end -}}
+            </h3>
+            {{- range .tactics }}
+            <div class="chat">
+              <p class="chat-line"><span class="chat-cmd">/i</span> {{ . }}</p>
+              <button type="button" class="copy" data-copy="/i {{ . }}" aria-label="Copy {{ $b.name }} tactics for instance chat" hidden>Copy</button>
+            </div>
+            {{- end }}
+            {{- with .heroic }}
+            <p class="heroic"><span class="heroic-label">Heroic:</span> {{ . }}</p>
+            {{- end }}
+          </div>
+        </li>
+        {{- end }}
+      </ol>
+    </section>
+  </div>
+
+  {{- with .Params.source }}
+  <footer class="guide-source">
+    <p>From the original quickdungeon.com guide{{ with .captured }}, as archived on {{ time.Format "2 January 2006" . }}{{ end }}.{{ with .url }} <a href="{{ . }}">View the archived page</a>.{{ end }}</p>
+  </footer>
+  {{- end }}
+</article>
+{{ end }}

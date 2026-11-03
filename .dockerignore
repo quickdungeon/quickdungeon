@@ -1,0 +1,7 @@
+# Only the Hugo source and the Caddyfile go into the image.
+*
+!site/
+!Caddyfile
+site/public/
+site/resources/
+site/.hugo_build.lock

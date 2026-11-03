@@ -1,0 +1,32 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{- $title := printf "%s: dungeon routes and boss tactics for World of Warcraft" site.Title }}
+{{- $desc := site.Params.description }}
+{{- if .IsPage }}
+  {{- $title = printf "%s route and boss tactics | %s" .Title site.Title }}
+  {{- $desc = printf "Route maps and quick boss tactics for %s in %s, %s: %d bosses, %d route maps." .Title .Params.zone .Params.continent (len .Params.bosses) (len .Params.route) }}
+{{- else if not .IsHome }}
+  {{- $title = printf "%s | %s" .Title site.Title }}
+{{- end }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#101629" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef1f7" media="(prefers-color-scheme: light)">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+{{- if .IsPage }}{{ with .Resources.Get .Params.thumbnail }}
+<meta property="og:image" content="{{ .Permalink }}">
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+{{- end }}{{ end }}
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="preload" href="{{ "fonts/archivo-latin-wdth-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- $css := resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{- $js := resources.Get "js/site.js" | js.Build (dict "minify" true "target" "es2020") | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

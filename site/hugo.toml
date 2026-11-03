@@ -1,0 +1,23 @@
+# Quick Dungeon - Hugo site config
+# baseURL is only used for canonical links, Open Graph and the sitemap; every in-site link is
+# relative, so the built site works on any host. Override at build time with --baseURL
+# (the Docker build exposes this as the BASE_URL build arg).
+baseURL = "https://quickdungeon.com/"
+languageCode = "en-us"
+title = "Quick Dungeon"
+disableKinds = ["taxonomy", "term", "rss"]
+enableRobotsTXT = true
+timeZone = "UTC"
+
+[params]
+  description = "Tank routes and quick boss tactics for World of Warcraft dungeons."
+
+[imaging]
+  quality = 80
+  resampleFilter = "Lanczos"
+
+[sitemap]
+  changeFreq = "monthly"
+
+[minify]
+  minifyOutput = true

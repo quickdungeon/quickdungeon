@@ -1,0 +1,33 @@
+# Local:     docker compose up --build            -> http://localhost:8080
+# Live edit: docker compose --profile dev up dev  -> http://localhost:1313 (reloads as you edit site/)
+# Public HTTPS server: see compose.https.yaml
+name: quickdungeon
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        BASE_URL: ${BASE_URL:-}
+    image: quickdungeon:latest
+    environment:
+      SITE_ADDRESS: ${SITE_ADDRESS:-:8080}
+    ports:
+      - "${PORT:-8080}:8080"
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    restart: unless-stopped
+
+  dev:
+    profiles: [dev]
+    build:
+      context: .
+      target: hugo
+    image: quickdungeon-hugo:latest
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /src
+    command: ["hugo", "server", "--bind", "0.0.0.0", "--port", "1313", "--baseURL", "http://localhost/"]
+    volumes:
+      - ./site:/src:z
+    ports:
+      - "1313:1313"

@@ -1,0 +1,40 @@
+{{ define "main" }}
+<section class="hero" aria-labelledby="site-title">
+  <h1 class="wordmark" id="site-title">{{ partial "mark.html" . }}Quick Dungeon</h1>
+  <p class="lede">Tank routes and quick boss tactics for World of Warcraft dungeons. Each guide has the route maps in order and a one-line tactic for every boss, ready to paste into instance chat.</p>
+  <div class="search" hidden>
+    <label class="visually-hidden" for="q">Find a dungeon by dungeon, zone or boss name</label>
+    <input id="q" type="search" placeholder="Find a dungeon, zone or boss" autocomplete="off" spellcheck="false" enterkeyhint="go" aria-describedby="search-hint">
+    <kbd id="search-hint" title="Press / to search"><span class="visually-hidden">Press </span>/</kbd>
+  </div>
+</section>
+
+{{ range site.Data.expansions }}
+<section class="expansion" id="{{ .id }}" aria-labelledby="exp-{{ .id }}">
+  <header class="expansion-head">
+    <h2 id="exp-{{ .id }}">{{ .name }}</h2>
+    <p>{{ len .guides }} dungeons</p>
+  </header>
+  <ul class="dungeons">
+  {{- range .guides }}
+    {{- $slug := . }}
+    {{- with site.GetPage (printf "/dungeons/%s" $slug) }}
+      {{- $words := slice .Title .Params.zone .Params.continent }}
+      {{- range .Params.bosses }}{{ $words = $words | append .name }}{{ end }}
+    <li class="dungeon" data-search="{{ delimit $words " " | lower | replaceRE `['’‘]` "" }}">
+      <a class="dungeon-link" href="{{ .RelPermalink }}">
+        <span class="dungeon-thumb">{{ partial "img.html" (dict "page" . "src" .Params.thumbnail "fill" "240x160" "alt" "") }}</span>
+        <span class="dungeon-name">{{ .Title }}</span>
+        <span class="dungeon-zone">{{ .Params.zone }}, {{ .Params.continent }}</span>
+        <span class="dungeon-count">{{ len .Params.bosses }} bosses</span>
+      </a>
+    </li>
+    {{- else }}
+      {{- warnf "expansion data lists %q but there is no content/dungeons/%s" $slug $slug }}
+    {{- end }}
+  {{- end }}
+  </ul>
+</section>
+{{ end }}
+<p class="no-results" hidden>Nothing matches “<span class="no-results-term"></span>”. Try part of a dungeon, zone or boss name.</p>
+{{ end }}

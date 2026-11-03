@@ -1,0 +1,17 @@
+{{- /* Responsive image from a page bundle.
+     args: page, src (bundle-relative path), alt, class, fill ("WxH" crop), loading,
+           link (wrap in a link to the original full-size file) */ -}}
+{{- $r := .page.Resources.Get .src -}}
+{{- if not $r -}}
+  {{- warnf "%s: missing image %q" .page.File.Path .src -}}
+{{- else -}}
+  {{- $img := "" -}}
+  {{- if .fill -}}
+    {{- $img = $r.Fill (printf "%s Center webp q75" .fill) -}}
+  {{- else -}}
+    {{- $img = $r.Process "webp q82" -}}
+  {{- end -}}
+  {{- if .link }}<a class="img-link" href="{{ $r.RelPermalink }}">{{ end -}}
+  <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ .alt | default "" }}"{{ with .class }} class="{{ . }}"{{ end }} loading="{{ .loading | default "lazy" }}" decoding="async">
+  {{- if .link }}</a>{{ end -}}
+{{- end -}}

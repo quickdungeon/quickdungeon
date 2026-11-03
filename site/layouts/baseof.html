@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {{- partial "head.html" . }}
+</head>
+<body class="{{ if .IsHome }}is-home{{ else }}is-guide{{ end }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{- partial "site-header.html" . }}
+  <main id="main" class="wrap">
+    {{- block "main" . }}{{ end }}
+  </main>
+  {{- partial "site-footer.html" . }}
+  <p class="visually-hidden" id="announcer" aria-live="polite"></p>
+</body>
+</html>

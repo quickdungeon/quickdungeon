@@ -1,0 +1,15 @@
+{{- /* Ordered text / image / archive-note blocks from the converter.
+     args: page, blocks, alt (base alt text for images), loading */ -}}
+{{- $total := 0 -}}
+{{- range .blocks }}{{ if .image }}{{ $total = add $total 1 }}{{ end }}{{ end -}}
+{{- $n := 0 -}}
+{{- range .blocks -}}
+  {{- with .text }}<p class="note">{{ . }}</p>{{ end -}}
+  {{- with .note }}<p class="archive-note"><strong>Archive note:</strong> {{ . }}</p>{{ end -}}
+  {{- with .image -}}
+    {{- $n = add $n 1 -}}
+    {{- $alt := $.alt -}}
+    {{- if gt $total 1 }}{{ $alt = printf "%s (image %d of %d)" $.alt $n $total }}{{ end -}}
+    <figure>{{ partial "img.html" (dict "page" $.page "src" . "alt" $alt "link" true "loading" ($.loading | default "lazy")) }}</figure>
+  {{- end -}}
+{{- end -}}
