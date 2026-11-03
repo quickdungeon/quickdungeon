@@ -1,6 +1,11 @@
-{{- if not .IsHome }}
-<header class="site-header wrap">
+<header class="site-header wrap{{ if .IsHome }} site-header--home{{ end }}">
+  {{- if not .IsHome }}
   <a class="brand" href="{{ "" | relURL }}">{{ partial "mark.html" . }}<span>Quick Dungeon</span></a>
-  <a class="site-nav-link" href="{{ "" | relURL }}">All dungeons</a>
+  {{- end }}
+  <div class="site-header-end">
+    {{- if not .IsHome }}
+    <a class="site-nav-link" href="{{ "" | relURL }}">All dungeons</a>
+    {{- end }}
+    {{ partial "theme-toggle.html" . }}
+  </div>
 </header>
-{{- end }}

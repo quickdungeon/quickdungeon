@@ -53,7 +53,8 @@ site/                      Hugo project (Hugo 0.147, built inside Docker; no loc
   data/expansions/         which guides each expansion section lists, and in what order
   layouts/                 templates (home, guide page, 404, partials)
   assets/css/main.css      all styles
-  assets/js/site.js        search, route-map stepper, copy-to-chat buttons
+  assets/js/site.js        theme toggle, search, route-map stepper, copy-to-chat buttons
+  assets/js/theme.js       applies a saved light theme before first paint
   static/                  font (Archivo, OFL licence), favicon
 Dockerfile, Caddyfile      build with Hugo, serve with Caddy
 compose.yaml               local + dev services
@@ -166,7 +167,10 @@ For example (WoW Forever is product `wowf`):
   map and the tactics together on a second monitor. On phones they stack.
 - Everything works without JavaScript (all maps are shown in order, and the tactics text can
   be selected). With JS you get search, the map stepper (arrow keys, `#map-3` deep links) and
-  copy buttons. Light and dark themes follow the system setting.
+  copy buttons.
+- Dark is the default theme for everyone. The sun/moon button in the top-right corner
+  switches to light and remembers it (`localStorage`). `assets/js/theme.js` is a tiny
+  blocking script in `<head>` that applies a saved light choice before the first paint.
 
 ## Archive notes
 

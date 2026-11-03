@@ -39,21 +39,21 @@
   color-scheme: dark;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --ink: #eef1f7;
-    --panel: #ffffff;
-    --panel-raised: #e2e8f3;
-    --line: #d3dae8;
-    --line-strong: #98a4bd;
-    --text: #1a2033;
-    --muted: #4f5a73;
-    --gold: #7d5b00;
-    --chat: #a64b00;
-    --cyan: #00718f;
-    --on-gold: #ffffff;
-    color-scheme: light;
-  }
+/* Dark is the default for everyone. Light is opt-in from the header toggle: theme.js sets
+   data-theme="light" before first paint when that choice is saved. */
+:root[data-theme="light"] {
+  --ink: #eef1f7;
+  --panel: #ffffff;
+  --panel-raised: #e2e8f3;
+  --line: #d3dae8;
+  --line-strong: #98a4bd;
+  --text: #1a2033;
+  --muted: #4f5a73;
+  --gold: #7d5b00;
+  --chat: #a64b00;
+  --cyan: #00718f;
+  --on-gold: #ffffff;
+  color-scheme: light;
 }
 
 /* ---- base ------------------------------------------------------------------ */
@@ -100,6 +100,24 @@ kbd { font: inherit; }
 .mark-start { stroke: var(--cyan); }
 .site-nav-link { color: var(--muted); font-weight: 500; }
 .site-nav-link:hover { color: var(--text); }
+.site-header-end { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
+/* home has no brand bar, just the theme toggle in the corner above the wordmark */
+.site-header--home { border-bottom: 0; padding-bottom: 0; }
+
+.theme-toggle {
+  display: inline-grid; place-items: center;
+  width: 2.25rem; height: 2.25rem; padding: 0;
+  color: var(--muted); background: transparent;
+  border: 1px solid transparent; border-radius: 999px;
+  cursor: pointer;
+}
+.theme-toggle:hover { color: var(--text); background: var(--panel); border-color: var(--line); }
+.theme-toggle[hidden] { display: none; }
+.theme-toggle svg { width: 1.25rem; height: 1.25rem; }
+/* the icon shows what you'll switch to: a sun in dark mode, a moon in light mode */
+.theme-toggle .icon-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
 .site-footer {
   margin-top: 5rem; padding-block: 2rem 3rem;
@@ -111,7 +129,7 @@ kbd { font: inherit; }
 .site-footer .legal { font-size: 0.8125rem; }
 
 /* ---- home ------------------------------------------------------------------ */
-.hero { padding-block: clamp(2.5rem, 8vw, 5.5rem) clamp(2rem, 5vw, 3.5rem); }
+.hero { padding-block: clamp(0.5rem, 4vw, 2.25rem) clamp(2rem, 5vw, 3.5rem); }
 .wordmark {
   display: flex; align-items: center; gap: 0.18em;
   color: var(--gold);

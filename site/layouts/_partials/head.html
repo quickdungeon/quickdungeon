@@ -14,9 +14,8 @@
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $desc }}">
 <link rel="canonical" href="{{ .Permalink }}">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#101629" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#eef1f7" media="(prefers-color-scheme: light)">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#101629">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $desc }}">
@@ -29,6 +28,10 @@
 {{- end }}{{ end }}
 <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 <link rel="preload" href="{{ "fonts/archivo-latin-wdth-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- /* Blocking on purpose (and before the stylesheet, so it doesn't wait on it): applies a
+     saved light theme before first paint. External because the CSP forbids inline scripts. */}}
+{{- $theme := resources.Get "js/theme.js" | js.Build (dict "minify" true "target" "es2020") | fingerprint }}
+<script src="{{ $theme.RelPermalink }}" integrity="{{ $theme.Data.Integrity }}"></script>
 {{- $css := resources.Get "css/main.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 {{- $js := resources.Get "js/site.js" | js.Build (dict "minify" true "target" "es2020") | fingerprint }}

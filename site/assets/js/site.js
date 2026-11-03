@@ -1,5 +1,6 @@
 // Quick Dungeon: progressive enhancement. Every page is complete without this script;
-// it adds the home-page search, the route-map stepper and the copy-to-chat buttons.
+// it adds the theme toggle, the home-page search, the route-map stepper and the
+// copy-to-chat buttons.
 document.documentElement.classList.add("js");
 
 const announcer = () => document.getElementById("announcer");
@@ -9,6 +10,43 @@ const announce = (msg) => {
   el.textContent = "";
   requestAnimationFrame(() => { el.textContent = msg; });
 };
+
+// ---- theme toggle: dark by default, light if picked ---------------------------
+// theme.js already applied any saved choice before paint; this wires up the button.
+function initTheme() {
+  const btn = document.querySelector(".theme-toggle");
+  if (!btn) return;
+  const root = document.documentElement;
+  const meta = document.querySelector('meta[name="theme-color"]');
+
+  const apply = (light) => {
+    if (light) root.dataset.theme = "light";
+    else delete root.dataset.theme;
+    const label = light ? "Switch to dark theme" : "Switch to light theme";
+    btn.setAttribute("aria-label", label);
+    btn.title = label;
+    // browser UI colour follows the page background (--ink in main.css)
+    if (meta) meta.content = getComputedStyle(root).getPropertyValue("--ink").trim();
+  };
+
+  btn.addEventListener("click", () => {
+    const light = root.dataset.theme !== "light";
+    apply(light);
+    try {
+      if (light) localStorage.setItem("theme", "light");
+      else localStorage.removeItem("theme");
+    } catch {
+      // storage blocked: the switch still applies to this page
+    }
+  });
+  // keep other open tabs in step
+  window.addEventListener("storage", (e) => {
+    if (e.key === "theme" || e.key === null) apply(e.newValue === "light");
+  });
+
+  apply(root.dataset.theme === "light");
+  btn.hidden = false;
+}
 
 // ---- home: filter the dungeon list -------------------------------------------
 function initSearch() {
@@ -174,6 +212,7 @@ function initCopy() {
   }
 }
 
+initTheme();
 initSearch();
 initRoute();
 initCopy();
