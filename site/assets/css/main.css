@@ -1,6 +1,10 @@
 /* Quick Dungeon
+   Palette: WoW Forever's key art for the ground, classic WoW's UI for the meaning.
+     dark  = the misty night teal of the WoW Forever banner, cream text like its lettering,
+             tan "trim" from the bronze ring around its emblem
+     light = a classic quest-log parchment, with names in dark bronze and the emblem's teal
    Colour carries meaning, borrowed from the game's own UI:
-     gold  = names (dungeons, bosses), like quest and NPC titles
+     gold  = names (dungeons, bosses), like quest and NPC titles (classic #ffd100)
      chat  = text you paste into instance chat (/i is orange in-game)
      cyan  = boss numbers, matching the annotations drawn on the route maps
    One family (Archivo) at three widths: expanded for names, normal for directions,
@@ -16,17 +20,19 @@
 }
 
 :root {
-  --ink: #101629;
-  --panel: #171f38;
-  --panel-raised: #1f2947;
-  --line: #2f3a59;
-  --line-strong: #56617f;
-  --text: #e8e9ee;
-  --muted: #9aa4bd;
+  --ink: #0b1d2b;
+  --panel: #11283a;
+  --panel-raised: #193449;
+  --line: #22405a;
+  --line-strong: #7f6d52;
+  --text: #ede4d1;
+  --muted: #94acb3;
   --gold: #ffd100;
   --chat: #ff7f00;
-  --cyan: #3fd0f5;
-  --on-gold: #101629;
+  --cyan: #56c8dd;
+  --on-gold: #0b1d2b;
+  --trim: #c1a480;
+  --glow: #1d4560;
 
   --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --wide: 125%;
@@ -42,17 +48,19 @@
 /* Dark is the default for everyone. Light is opt-in from the header toggle: theme.js sets
    data-theme="light" before first paint when that choice is saved. */
 :root[data-theme="light"] {
-  --ink: #eef1f7;
-  --panel: #ffffff;
-  --panel-raised: #e2e8f3;
-  --line: #d3dae8;
-  --line-strong: #98a4bd;
-  --text: #1a2033;
-  --muted: #4f5a73;
-  --gold: #7d5b00;
-  --chat: #a64b00;
-  --cyan: #00718f;
-  --on-gold: #ffffff;
+  --ink: #efe5cf;
+  --panel: #faf5e9;
+  --panel-raised: #e6d8bb;
+  --line: #d8c8a6;
+  --line-strong: #8a7550;
+  --text: #2a2016;
+  --muted: #5d4f3d;
+  --gold: #6e4a00;
+  --chat: #9c3f00;
+  --cyan: #046280;
+  --on-gold: #faf5e9;
+  --trim: #8a6a3c;
+  --glow: #f8f0dc;
   color-scheme: light;
 }
 
@@ -61,7 +69,8 @@
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--ink);
+  /* a soft glow at the top of the page, like the mist in the WoW Forever banner */
+  background: radial-gradient(120% 100% at 50% 0%, var(--glow), var(--ink) 70%) top / 100% 36rem no-repeat var(--ink);
   color: var(--text);
   font-family: var(--font);
   font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -90,6 +99,7 @@ kbd { font: inherit; }
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding-block: 1rem;
   border-bottom: 1px solid var(--line);
+  border-image: linear-gradient(90deg, var(--trim), var(--line) 40%) 1;
 }
 .brand {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -102,7 +112,7 @@ kbd { font: inherit; }
 .site-nav-link:hover { color: var(--text); }
 .site-header-end { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
 /* home has no brand bar, just the theme toggle in the corner above the wordmark */
-.site-header--home { border-bottom: 0; padding-bottom: 0; }
+.site-header--home { border-bottom: 0; border-image: none; padding-bottom: 0; }
 
 .theme-toggle {
   display: inline-grid; place-items: center;
@@ -165,6 +175,7 @@ kbd { font: inherit; }
   display: flex; align-items: baseline; gap: 1rem;
   padding-bottom: 0.75rem; margin-bottom: 0.5rem;
   border-bottom: 1px solid var(--line);
+  border-image: linear-gradient(90deg, var(--trim), var(--line) 40%) 1;
 }
 .expansion-head h2 { font-size: 1.5rem; font-weight: 700; font-stretch: var(--semi-wide); }
 .expansion-head p { color: var(--muted); }

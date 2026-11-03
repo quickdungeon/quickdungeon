@@ -160,7 +160,10 @@ For example (WoW Forever is product `wowf`):
 - Colour means something, and it's borrowed from the game's UI. Gold is for names (dungeons,
   bosses), like quest and NPC titles. Orange is for text you paste into instance chat (`/i`
   chat is orange in-game). Cyan boss numbers match the cyan annotations on the route maps.
-  The navy background is close to the game's tooltips, so the parchment maps stand out.
+  The dark theme's background is the misty night teal of the WoW Forever key art (with a
+  soft glow at the top of the page), body text is the cream of its lettering, and the tan
+  rules come from the bronze ring around its emblem, so the parchment maps stand out. The
+  light theme is classic quest-log parchment.
 - One typeface, Archivo, at three widths: expanded for names, normal for directions,
   condensed for chat lines.
 - On wide screens the route map stays pinned while the boss list scrolls, so you can see the
