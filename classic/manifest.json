@@ -1,0 +1,475 @@
+{
+  "shadowfang-keep": {
+    "status": "ok",
+    "title": "Shadowfang Keep",
+    "source": "https://web.archive.org/web/20241111045715/https://quickdungeon.com/shadowfang-keep/",
+    "images": [
+      "baron-ashbury-model.jpg",
+      "baron-silverlaine-model.jpg",
+      "commander-springvale-model.jpg",
+      "lord-godfrey-model.jpg",
+      "lord-walden-model.jpg",
+      "shadowfang-keep-dungeon-map-1.jpg",
+      "shadowfang-keep-dungeon-map-2.jpg",
+      "shadowfang-keep-dungeon-map-3.jpg",
+      "shadowfang-keep-dungeon-map-4.jpg",
+      "shadowfang-keep-dungeon-map-5.jpg",
+      "shadowfang-keep-dungeon-map-6.jpg",
+      "shadowfang-keep-dungeon-map-7.jpg",
+      "shadowfang-keep-dungeon-map-8.jpg",
+      "shadowfang-keep-entrance-map1.jpg"
+    ],
+    "missing": []
+  },
+  "ragefire-chasm": {
+    "status": "ok",
+    "title": "Ragefire Chasm",
+    "source": "https://web.archive.org/web/20241111035054/https://quickdungeon.com/ragefire-chasm/",
+    "images": [
+      "adarogg-model1.jpg",
+      "dark-shaman-koranthal-model.jpg",
+      "lava-guard-gordoth-model.jpg",
+      "ragefire-chasm-dungeon-map.jpg",
+      "ragefire-chasm-entrance-map.jpg",
+      "slagmaw-model.jpg"
+    ],
+    "missing": []
+  },
+  "deadmines": {
+    "status": "ok",
+    "title": "Deadmines",
+    "source": "https://web.archive.org/web/20240918171128/https://quickdungeon.com/deadmines/",
+    "images": [
+      "admiral-ripsnarl-model.jpg",
+      "captain-cookie-model.jpg",
+      "deadmines-dungeon-map-11.jpg",
+      "deadmines-dungeon-map-22.jpg",
+      "deadmines-entrance-map.jpg",
+      "deadmines-moonbrook-building.jpg",
+      "foe-reaper-5000-model.jpg",
+      "glubtok-model.jpg",
+      "helix-gearbreaker-model.jpg",
+      "vanessa-vancleef-model.jpg"
+    ],
+    "missing": []
+  },
+  "wailing-caverns": {
+    "status": "ok",
+    "title": "Wailing Caverns",
+    "source": "https://web.archive.org/web/20241111025145/https://quickdungeon.com/wailing-caverns/",
+    "images": [
+      "kresh-model.jpg",
+      "lady-anacondra-model.jpg",
+      "lord-cobrahn-model.jpg",
+      "lord-pythas-model.jpg",
+      "lord-serpentis-model.jpg",
+      "mutanus-the-devourer-model.jpg",
+      "skum-model.jpg",
+      "verdan-the-everliving-model.jpg",
+      "wailing-caverns-dungeon-map-1.jpg",
+      "wailing-caverns-dungeon-map-2.jpg",
+      "wailing-caverns-dungeon-map-3.jpg",
+      "wailing-caverns-dungeon-map-4.jpg",
+      "wailing-caverns-entrance-cavern-of-mists.jpg",
+      "wailing-caverns-entrance-map.jpg"
+    ],
+    "missing": []
+  },
+  "blackfathom-deeps": {
+    "status": "ok",
+    "title": "Blackfathom Deeps",
+    "source": "https://web.archive.org/web/20240918185140/https://quickdungeon.com/blackfathom-deeps/",
+    "images": [
+      "akumai-model.jpg",
+      "blackfathom-deeps-dungeon-map1.jpg",
+      "blackfathom-deeps-dungeon-map2.jpg",
+      "blackfathom-deeps-dungeon-map3.jpg",
+      "blackfathom-deeps-entrance-ashenvale.jpg",
+      "blackfathom-deeps-entrance-map.jpg",
+      "domina-model.jpg",
+      "executioner-gore-model.jpg",
+      "ghamoo-ra-model.jpg",
+      "guardian-of-the-deep-model.jpg",
+      "subjugator-korul-model.jpg",
+      "thruk-model.jpg",
+      "twilight-lord-bathiel-model.jpg"
+    ],
+    "missing": []
+  },
+  "stormwind-stockade": {
+    "status": "ok",
+    "title": "Stormwind Stockade",
+    "source": "https://web.archive.org/web/20241005154026/https://quickdungeon.com/stormwind-stockade/",
+    "images": [
+      "hogger-model.jpg",
+      "lord-overheat-model.jpg",
+      "randolph-moloch-model.jpg",
+      "stormwind-stockade-dungeon-map.jpg",
+      "stormwind-stockade-entrance-map1.jpg"
+    ],
+    "missing": []
+  },
+  "gnomeregan": {
+    "status": "ok",
+    "title": "Gnomeregan",
+    "source": "https://web.archive.org/web/20241111041646/https://quickdungeon.com/gnomeregan/",
+    "images": [
+      "crowd-pummeler-model.jpg",
+      "electrocutioner-6000-model.jpg",
+      "gnomeregan-dungeon-entrance-map1.jpg",
+      "gnomeregan-dungeon-entrance.jpg",
+      "gnomeregan-dungeon-entrances.jpg",
+      "gnomeregan-dungeon-map1.jpg",
+      "gnomeregan-dungeon-map2.jpg",
+      "gnomeregan-dungeon-map3.jpg",
+      "gnomeregan-dungeon-map4.jpg",
+      "grubbis-model.jpg",
+      "mekgineer-thermaplugg-model.jpg",
+      "viscous-fallout-model.jpg"
+    ],
+    "missing": []
+  },
+  "scarlet-halls": {
+    "status": "ok",
+    "title": "Scarlet Halls",
+    "source": "https://web.archive.org/web/20241111041818/https://quickdungeon.com/scarlet-halls/",
+    "images": [
+      "armsmaster-harlan-model.jpg",
+      "flameweaver-koegler-model.jpg",
+      "houndmaster-braun-model.jpg",
+      "scarlet-halls-dungeon-map1.jpg",
+      "scarlet-halls-dungeon-map2.jpg",
+      "scarlet-monastery-dungeon-entrance.jpg"
+    ],
+    "missing": []
+  },
+  "scarlet-monastery": {
+    "status": "ok",
+    "title": "Scarlet Monastery",
+    "source": "https://web.archive.org/web/20241111042900/https://quickdungeon.com/scarlet-monastery/",
+    "images": [
+      "brother-korloff-model.jpg",
+      "high-inquisitor-whitemane-model.jpg",
+      "scarlet-monastery-dungeon-entrance1.jpg",
+      "scarlet-monastery-dungeon-map1.jpg",
+      "scarlet-monastery-dungeon-map2.jpg",
+      "thalnos-the-soulrender-model.jpg"
+    ],
+    "missing": []
+  },
+  "maraudon-the-wicked-grotto": {
+    "status": "ok",
+    "title": "Maraudon: The Wicked Grotto",
+    "source": "https://web.archive.org/web/20241005163429/https://quickdungeon.com/maraudon-the-wicked-grotto/",
+    "images": [
+      "celebras-the-cursed-model.jpg",
+      "lord-vyletongue-model.jpg",
+      "maraudon-dungeon-entrance-map.jpg",
+      "maraudon-entrance-stone-door.jpg",
+      "maraudon-the-wicked-grotto-dungeon-map1.jpg",
+      "maraudon-the-wicked-grotto-dungeon-map2.jpg",
+      "maraudon-the-wicked-grotto-entrance-map1.jpg",
+      "tinkerer-gizlock-model.jpg"
+    ],
+    "missing": []
+  },
+  "razorfen-kraul": {
+    "status": "ok",
+    "title": "Razorfen Kraul",
+    "source": "https://web.archive.org/web/20241005163807/https://quickdungeon.com/razorfen-kraul/",
+    "images": [
+      "blind-hunter-model.jpg",
+      "charlga-razorflank-model.jpg",
+      "hunter-bonetusk-model.jpg",
+      "razorfen-kraul-dungeon-map.jpg",
+      "razorfen-kraul-entrance-map.jpg",
+      "roogug-model.jpg",
+      "warlord-ramtusk-model.jpg"
+    ],
+    "missing": []
+  },
+  "maraudon-foulspore-cavern": {
+    "status": "ok",
+    "title": "Maraudon: Foulspore Cavern",
+    "source": "https://web.archive.org/web/20240918174946/https://quickdungeon.com/maraudon-foulspore-cavern/",
+    "images": [
+      "maraudon-dungeon-entrance-map.jpg",
+      "maraudon-entrance-stone-door.jpg",
+      "maraudon-foulspore-cavern-dungeon-map.jpg",
+      "maraudon-foulspore-cavern-entrance-map.jpg",
+      "noxxion-model.jpg",
+      "razorlash-model.jpg"
+    ],
+    "missing": []
+  },
+  "maraudon-earth-song-falls": {
+    "status": "ok",
+    "title": "Maraudon: Earth Song Falls",
+    "source": "https://web.archive.org/web/20241111045750/https://quickdungeon.com/maraudon-earth-song-falls/",
+    "images": [
+      "landslide-model.jpg",
+      "maraudon-dungeon-entrance-map.jpg",
+      "maraudon-earth-song-falls-dungeon-map1.jpg",
+      "maraudon-earth-song-falls-entrance-map.jpg",
+      "maraudon-entrance-stone-door.jpg",
+      "princess-theradras-model.jpg",
+      "rotgrip-model.jpg"
+    ],
+    "missing": []
+  },
+  "uldaman": {
+    "status": "ok",
+    "title": "Uldaman",
+    "source": "https://web.archive.org/web/20241111033750/https://quickdungeon.com/uldaman/",
+    "images": [
+      "ancient-stone-keeper-model.jpg",
+      "archaedas-model.jpg",
+      "baelog-model.jpg",
+      "galgann-firehammer-model.jpg",
+      "grimlok-model.jpg",
+      "ironaya-model.jpg",
+      "obsidian-sentinel-model.jpg",
+      "revelosh-model.jpg",
+      "uldaman-back-entrance.jpg",
+      "uldaman-dungeon-map1.jpg",
+      "uldaman-dungeon-map21.jpg",
+      "uldaman-entrance-map.jpg",
+      "uldaman-entrance.jpg"
+    ],
+    "missing": []
+  },
+  "dire-maul-warpwood-quarter": {
+    "status": "ok",
+    "title": "Dire Maul: Warpwood Quarter",
+    "source": "https://web.archive.org/web/20240720104610/https://quickdungeon.com/dire-maul-warpwood-quarter/",
+    "images": [
+      "alzzin-the-wildshaper-model.jpg",
+      "dire-maul-dungeon-entrance-map1.jpg",
+      "dire-maul-warpwood-quarter-dungeon-map1.jpg",
+      "dire-maul-warpwood-quarter-dungeon-map2.jpg",
+      "dire-maul-warpwood-quarter-main-entrance.jpg",
+      "hydrospawn-model.jpg",
+      "lethtendris-model.jpg",
+      "zevrim-thornhoof-model.jpg"
+    ],
+    "missing": []
+  },
+  "scholomance": {
+    "status": "ok",
+    "title": "Scholomance",
+    "source": "https://web.archive.org/web/20240918172436/https://quickdungeon.com/scholomance/",
+    "images": [
+      "darkmaster-gandling-model.jpg",
+      "instructor-chillheart-model.jpg",
+      "jandice-barov-model.jpg",
+      "lilian-voss-model.jpg",
+      "rattlegore-model.jpg",
+      "scholomance-dungeon-map1.jpg",
+      "scholomance-dungeon-map2.jpg",
+      "scholomance-dungeon-map3.jpg",
+      "scholomance-entrance-map.jpg"
+    ],
+    "missing": []
+  },
+  "dire-maul-capital-gardens": {
+    "status": "ok",
+    "title": "Dire Maul: Capital Gardens",
+    "source": "https://web.archive.org/web/20240918171419/https://quickdungeon.com/dire-maul-capital-gardens/",
+    "images": [
+      "dire-maul-capital-gardens-dungeon-map1.jpg",
+      "dire-maul-capital-gardens-dungeon-map2.jpg",
+      "dire-maul-capital-gardens-dungeon-map31.jpg",
+      "dire-maul-capital-gardens-dungeon-map4.jpg",
+      "dire-maul-capital-gardens-dungeon-map5.jpg",
+      "dire-maul-capital-gardens-dungeon-map6.jpg",
+      "dire-maul-capital-gardens-dungeon-map7.jpg",
+      "dire-maul-capital-gardens-entrances.jpg",
+      "dire-maul-dungeon-entrance-map1.jpg",
+      "illyanna-ravenoak-model.jpg",
+      "immolthar-model.jpg",
+      "magister-kalendris-model.jpg",
+      "prince-tortheldrin-model.jpg",
+      "tendris-warpwood-model.jpg"
+    ],
+    "missing": []
+  },
+  "razorfen-downs": {
+    "status": "ok",
+    "title": "Razorfen Downs",
+    "source": "https://web.archive.org/web/20241111033021/https://quickdungeon.com/razorfen-downs/",
+    "images": [
+      "aarux-model.jpg",
+      "amnennar-the-coldbringer-model.jpg",
+      "death-speaker-blackthorn-model.jpg",
+      "mordresh-fire-eye-model.jpg",
+      "mushlump-model.jpg",
+      "razorfen-downs-dungeon-map.jpg",
+      "razorfen-downs-entrance-map.jpg"
+    ],
+    "missing": []
+  },
+  "dire-maul-gordok-commons": {
+    "status": "ok",
+    "title": "Dire Maul: Gordok Commons",
+    "source": "https://web.archive.org/web/20240918181752/https://quickdungeon.com/dire-maul-gordok-commons/",
+    "images": [
+      "captain-kromcrush-model.jpg",
+      "cho-rush-the-observer-model.jpg",
+      "dire-maul-dungeon-entrance-map1.jpg",
+      "dire-maul-gordok-commons-dungeon-map1.jpg",
+      "dire-maul-gordok-commons-entrance.jpg",
+      "guard-fengus-model.jpg",
+      "guard-moldar-model.jpg",
+      "guard-slipkik-model.jpg",
+      "king-gordok-model.jpg",
+      "stomper-kreeg-model.jpg"
+    ],
+    "missing": []
+  },
+  "stratholme-main-gate": {
+    "status": "ok",
+    "title": "Stratholme: Main Gate",
+    "source": "https://web.archive.org/web/20241005160652/https://quickdungeon.com/stratholme-main-gate/",
+    "images": [
+      "balnazzar-model.jpg",
+      "commander-malor-model.jpg",
+      "hearthsinger-forresten-model.jpg",
+      "instructor-galeford-model.jpg",
+      "stratholme-main-gate-dungeon-entrance.jpg",
+      "stratholme-main-gate-dungeon-map.jpg",
+      "the-unforgiven-model.jpg",
+      "timmy-the-cruel-model.jpg",
+      "willey-hopebreaker-model.jpg"
+    ],
+    "missing": []
+  },
+  "zulfarrak": {
+    "status": "ok",
+    "title": "Zul\u2019Farrak",
+    "source": "https://web.archive.org/web/20240805091819/https://quickdungeon.com/zulfarrak/",
+    "images": [
+      "antusul-model.jpg",
+      "chief-ukorz-sandscalp-model.jpg",
+      "gahzrilla-model.jpg",
+      "hydromancer-velratha-model.jpg",
+      "nekrum-sezzziz-model.jpg",
+      "theka-the-martyr-model.jpg",
+      "witch-doctor-zumrah-model.jpg",
+      "zul-farrak-dungeon-entrance.jpg",
+      "zul-farrak-dungeon-map.jpg"
+    ],
+    "missing": []
+  },
+  "stratholme-service-entrance": {
+    "status": "ok",
+    "title": "Stratholme: Service Entrance",
+    "source": "https://web.archive.org/web/20241005163356/https://quickdungeon.com/stratholme-service-entrance/",
+    "images": [
+      "baroness-anastari-model.jpg",
+      "lord-aurius-rivendare-model.jpg",
+      "magistrate-barthilas-model.jpg",
+      "maleki-the-pallid-model.jpg",
+      "nerubenkan-model.jpg",
+      "ramstein-the-gorger-model.jpg",
+      "stratholme-service-entrance-dungeon-entrance.jpg",
+      "stratholme-service-entrance-dungeon-map1.jpg",
+      "stratholme-service-entrance-eastwall-gate.jpg"
+    ],
+    "missing": []
+  },
+  "blackrock-depths-detention-block": {
+    "status": "ok",
+    "title": "Blackrock Depths: Detention Block",
+    "source": "https://web.archive.org/web/20240918180858/https://quickdungeon.com/blackrock-depths-detention-block/",
+    "images": [
+      "bael-gar-model.jpg",
+      "blackrock-depths-detention-block-dungeon-map.jpg",
+      "blackrock-depths-dungeon-entrances.jpg",
+      "blackrock-depths-entrance-map.jpg",
+      "blackrock-depths-main-entrance.jpg",
+      "fineous-darkvire-model.jpg",
+      "high-interrogator-gerstahn-model.jpg",
+      "houndmaster-grebmar-model.jpg",
+      "lord-incendius-model.jpg",
+      "lord-roccor-model.jpg",
+      "ring-of-law-high-justice-grimstone-model.jpg"
+    ],
+    "missing": []
+  },
+  "the-temple-of-atalhakkar": {
+    "status": "ok",
+    "title": "The Temple of Atal\u2019Hakkar",
+    "source": "https://web.archive.org/web/20240918192627/https://quickdungeon.com/the-temple-of-atalhakkar/",
+    "images": [
+      "avatar-of-hakkar-model.jpg",
+      "jammalan-the-prophet-model.jpg",
+      "shade-of-eranikus-model.jpg",
+      "the-temple-of-atale28099hakkar-entrance.jpg",
+      "the-temple-of-atalhakkar-dungeon-map.jpg",
+      "the-temple-of-atalhakkar-entrance-map.jpg",
+      "wardens-of-the-dream-model.jpg"
+    ],
+    "missing": []
+  },
+  "blackrock-depths-upper-city": {
+    "status": "ok",
+    "title": "Blackrock Depths: Upper City",
+    "source": "https://web.archive.org/web/20240918191824/https://quickdungeon.com/blackrock-depths-upper-city/",
+    "images": [
+      "ambassador-flamelash-model.jpg",
+      "blackrock-depths-dungeon-entrances.jpg",
+      "blackrock-depths-entrance-map.jpg",
+      "blackrock-depths-main-entrance.jpg",
+      "emperor-dagran-thaurissan-model.jpg",
+      "general-angerforge-model.jpg",
+      "golem-lord-argelmach-model.jpg",
+      "hurley-blackbreath-model.jpg",
+      "magmus-model.jpg",
+      "phalanx-model.jpg",
+      "plugger-spazzring-model.jpg",
+      "pyromancer-loregrain-model.jpg",
+      "ribbly-screwspigot-model.jpg",
+      "the-seven-model.jpg",
+      "warder-stilgiss-model.jpg"
+    ],
+    "missing": [
+      "https://quickdungeon.com/wp-content/uploads/2024/02/Blackrock-Depths-Upper-City-Dungeon-Route-Map-LFD.jpg",
+      "https://quickdungeon.com/wp-content/uploads/2024/02/Blackrock-Depths-Upper-City-Dungeon-Route-Map.jpg"
+    ],
+    "note": "2024 route maps not archived; original 2014 maps substituted",
+    "substituted": [
+      "images/2014-Blackrock-Depths-Upper-City-Dungeon-Map11.jpg",
+      "images/2014-Blackrock-Depths-Upper-City-Dungeon-Map2.jpg"
+    ]
+  },
+  "lower-blackrock-spire": {
+    "status": "ok",
+    "title": "Lower Blackrock Spire",
+    "source": "https://web.archive.org/web/20240720091817/https://quickdungeon.com/lower-blackrock-spire/",
+    "images": [
+      "gizrul-the-slavener-model.jpg",
+      "halycon-model.jpg",
+      "highlord-omokk-model.jpg",
+      "lower-blackrock-spire-dungeon-entrances.jpg",
+      "lower-blackrock-spire-dungeon-map1.jpg",
+      "lower-blackrock-spire-dungeon-map2.jpg",
+      "lower-blackrock-spire-dungeon-map3.jpg",
+      "lower-blackrock-spire-dungeon-map4.jpg",
+      "lower-blackrock-spire-dungeon-map5.jpg",
+      "lower-blackrock-spire-dungeon-map6.jpg",
+      "lower-blackrock-spire-dungeon-map7.jpg",
+      "lower-blackrock-spire-dungeon-map8.jpg",
+      "lower-blackrock-spire-dungeon-map9.jpg",
+      "lower-blackrock-spire-entrance-map.jpg",
+      "lower-blackrock-spire-main-entrance.jpg",
+      "mother-smolderweb-model.jpg",
+      "overlord-wyrmthalak-model.jpg",
+      "quartermaster-zigris-model.jpg",
+      "shadow-hunter-voshgajin-model.jpg",
+      "shortcut-lower-blackrock-spire-entrance.jpg",
+      "urok-doomhowl-model.jpg",
+      "war-master-voone-model.jpg"
+    ],
+    "missing": []
+  }
+}
