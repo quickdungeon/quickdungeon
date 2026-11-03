@@ -1,13 +1,16 @@
 {{- /* Responsive image from a page bundle.
-     args: page, src (bundle-relative path), alt, class, fill ("WxH" crop), loading,
-           link (wrap in a link to the original full-size file) */ -}}
-{{- $r := .page.Resources.Get .src -}}
+     args: page, src (bundle-relative path) or res (a resource, e.g. from resources.Get),
+           alt, class, fill ("WxH" crop) or fit ("WxH" scale to fit, no crop), loading, link (wrap in a link to the original file) */ -}}
+{{- $r := .res -}}
+{{- if not $r }}{{ $r = .page.Resources.Get .src }}{{ end -}}
 {{- if not $r -}}
   {{- warnf "%s: missing image %q" .page.File.Path .src -}}
 {{- else -}}
   {{- $img := "" -}}
   {{- if .fill -}}
     {{- $img = $r.Fill (printf "%s Center webp q75" .fill) -}}
+  {{- else if .fit -}}
+    {{- $img = $r.Fit (printf "%s webp q75" .fit) -}}
   {{- else -}}
     {{- $img = $r.Process "webp q82" -}}
   {{- end -}}

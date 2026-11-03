@@ -2,7 +2,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {{- $title := printf "%s: dungeon routes and boss tactics for World of Warcraft" site.Title }}
 {{- $desc := site.Params.description }}
-{{- if .IsPage }}
+{{- if and .IsPage (eq .Params.status "overview") }}
+  {{- $title = printf "%s map and bosses | %s" .Title site.Title }}
+  {{- $desc = .Params.description | default (printf "Top-down map and boss list for %s." .Title) }}
+{{- else if .IsPage }}
   {{- $title = printf "%s route and boss tactics | %s" .Title site.Title }}
   {{- $desc = printf "Route maps and quick boss tactics for %s in %s, %s: %d bosses, %d route maps." .Title .Params.zone .Params.continent (len .Params.bosses) (len .Params.route) }}
 {{- else if not .IsHome }}

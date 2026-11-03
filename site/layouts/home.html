@@ -1,7 +1,7 @@
 {{ define "main" }}
 <section class="hero" aria-labelledby="site-title">
   <h1 class="wordmark" id="site-title">{{ partial "mark.html" . }}Quick Dungeon</h1>
-  <p class="lede">Tank routes and quick boss tactics for World of Warcraft Forever dungeons.</p>
+  <p class="lede">Tank routes and quick boss tactics for World of Warcraft dungeons. Each guide has the route maps in order and a one-line tactic for every boss, ready to paste into instance chat.</p>
   <div class="search" hidden>
     <label class="visually-hidden" for="q">Find a dungeon by dungeon, zone or boss name</label>
     <input id="q" type="search" placeholder="Find a dungeon, zone or boss" autocomplete="off" spellcheck="false" enterkeyhint="go" aria-describedby="search-hint">
@@ -9,23 +9,39 @@
   </div>
 </section>
 
-{{ range site.Data.expansions }}
-<section class="expansion" id="{{ .id }}" aria-labelledby="exp-{{ .id }}">
+{{- /* Sections follow params.expansionOrder in hugo.toml; any data file not listed there comes after. */}}
+{{- $keys := slice }}
+{{- range $k, $_ := site.Data.expansions }}{{ $keys = $keys | append $k }}{{ end }}
+{{- $order := slice }}
+{{- range site.Params.expansionOrder }}{{ if in $keys . }}{{ $order = $order | append . }}{{ end }}{{ end }}
+{{- range sort $keys }}{{ if not (in $order .) }}{{ $order = $order | append . }}{{ end }}{{ end }}
+
+{{ range $order }}
+{{- $exp := index site.Data.expansions . }}
+<section class="expansion" id="{{ $exp.id }}" aria-labelledby="exp-{{ $exp.id }}">
   <header class="expansion-head">
-    <h2 id="exp-{{ .id }}">{{ .name }}</h2>
-    <p>{{ len .guides }} dungeons</p>
+    <h2 id="exp-{{ $exp.id }}">{{ $exp.name }}</h2>
+    <p>{{ len $exp.guides }} dungeons</p>
   </header>
+  {{- with $exp.blurb }}
+  <p class="expansion-blurb">{{ . }}{{ with $exp.credit }} Maps by <a href="{{ .url }}">{{ .name }}</a>.{{ end }}</p>
+  {{- end }}
   <ul class="dungeons">
-  {{- range .guides }}
+  {{- range $exp.guides }}
     {{- $slug := . }}
     {{- with site.GetPage (printf "/dungeons/%s" $slug) }}
-      {{- $words := slice .Title .Params.zone .Params.continent }}
+      {{- $words := slice .Title $exp.name }}
+      {{- with .Params.zone }}{{ $words = $words | append . }}{{ end }}
+      {{- with .Params.continent }}{{ $words = $words | append . }}{{ end }}
       {{- range .Params.bosses }}{{ $words = $words | append .name }}{{ end }}
     <li class="dungeon" data-search="{{ delimit $words " " | lower | replaceRE `['’‘]` "" }}">
       <a class="dungeon-link" href="{{ .RelPermalink }}">
-        <span class="dungeon-thumb">{{ partial "img.html" (dict "page" . "src" .Params.thumbnail "fill" "240x160" "alt" "") }}</span>
+        <span class="dungeon-thumb">
+          {{- if eq .Params.thumbnail_fit "contain" }}{{ partial "img.html" (dict "page" . "src" .Params.thumbnail "fit" "240x160" "class" "thumb-contain" "alt" "") }}
+          {{- else }}{{ partial "img.html" (dict "page" . "src" .Params.thumbnail "fill" "240x160" "alt" "") }}{{ end -}}
+        </span>
         <span class="dungeon-name">{{ .Title }}</span>
-        <span class="dungeon-zone">{{ .Params.zone }}, {{ .Params.continent }}</span>
+        <span class="dungeon-zone">{{ if .Params.zone }}{{ .Params.zone }}, {{ .Params.continent }}{{ else }}{{ .Params.list_note | default "Map and boss list only" }}{{ end }}</span>
         <span class="dungeon-count">{{ len .Params.bosses }} bosses</span>
       </a>
     </li>

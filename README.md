@@ -59,7 +59,9 @@ Dockerfile, Caddyfile      build with Hugo, serve with Caddy
 compose.yaml               local + dev services
 compose.https.yaml         override for a public HTTPS server
 classic/                   the raw recovered archive (original HTML + images); not deployed
-tools/                     archive downloader and the archive-to-Hugo converter
+artist-maps/               unmodified originals of third-party maps (Santiago Reyes); not deployed
+game-maps/                 maps extracted from the WoW Forever client (entrance areas, new-dungeon overviews)
+tools/                     archive downloader, archive-to-Hugo converter, game-file extraction tools
 ```
 
 Guide URLs match the old WordPress site (`/shadowfang-keep/`), so old links and search
@@ -115,6 +117,42 @@ downloaded yet. To add an expansion:
 
 The converter needs Python with `beautifulsoup4` and `lxml`, which nest the WordPress markup
 the same way a browser does.
+
+## Third-party maps (credit required)
+
+All four new WoW Forever dungeon pages (City of Dalaran with its city and sewers maps, Ruins
+of Lordaeron, The Hall of Thanes, Excavation Site: Wetlands) show maps by **Santiago Reyes**
+([Atlas de Azeroth: Forever](https://asguevara433.wixsite.com/srmaps)). His project post gives
+everyone permission to use the maps for free, on these conditions: don't alter the watermark
+or credits, and don't use the maps to make money. He also asks people to write to him so he
+can approve the use (contact page: https://asguevara433.wixsite.com/srmaps/contacto).
+Each map shows "Map by Santiago Reyes" with a link to his site underneath it. That comes from
+the image block's `credit:` field (its `source:` records where the file came from), so keep
+the field if you swap or move an image. The home-page thumbnails use his maps scaled
+down (add `thumbnail_fit: "contain"` to a page to fit a differently shaped map without
+cropping). The two Dalaran maps had a title banner across the bottom, which is cropped off
+for the site; his watermark inside the map is untouched. The unmodified originals are in
+`artist-maps/`. The "New in WoW Forever" intro line credits him with a
+link, set by `credit:` in `site/data/expansions/forever.yaml`.
+
+## Maps from the game client
+
+`site/data/entrance_maps.yaml` lists in-game maps that appear under a guide's entrance
+directions (Blackrock Mountain, Gnomeregan, Uldaman). The images are in
+`site/assets/game-maps/`. They're kept out of `content/` so that rerunning the converter
+doesn't delete them. `game-maps/README.md` describes every extracted map, including top-down
+overviews and boss lists for the five new WoW Forever dungeons, which don't have guides yet.
+
+The extraction tools only read the game files:
+
+- `tools/casc_read.py WOW_DIR PRODUCT OUT_DIR FDID...` extracts files by FileDataID from a
+  local CASC install (pure Python, no third-party code).
+- `tools/stitch_uimap.py DB2_DIR WOW_DIR PRODUCT OUT_DIR ART_ID...` assembles world-map art
+  from its tiles. The UiMapArt* tables come as CSV from `https://wago.tools/db2/<Table>/csv?build=<version>`.
+- `tools/wdt_minimap.py WOW_DIR PRODUCT WDT_FDID OUT.png` stitches a map's terrain minimap tiles.
+
+For example (WoW Forever is product `wowf`):
+`python3 -I tools/casc_read.py "/path/to/World of Warcraft" wowf out 603971`
 
 ## Design notes
 

@@ -11,6 +11,8 @@ timeZone = "UTC"
 
 [params]
   description = "Tank routes and quick boss tactics for World of Warcraft dungeons."
+  # Home page section order (files in data/expansions/). Newest first, like the original site.
+  expansionOrder = ["forever", "classic"]
 
 [imaging]
   quality = 80
