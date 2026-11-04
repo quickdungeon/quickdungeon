@@ -4,12 +4,10 @@
 lower-blackrock-spire:
   - file: "game-maps/blackrock-mountain-main.png"
     caption: "Blackrock Mountain, main level. Searing Gorge is at the top, Burning Steppes at the bottom, and the Lower Blackrock Spire portal is on the right."
-blackrock-depths-detention-block:
+upper-blackrock-spire:
   - file: "game-maps/blackrock-mountain-main.png"
-    caption: "Blackrock Mountain, main level, with the Searing Gorge and Burning Steppes entrances. The chain in the middle leads down to the lower level."
-  - file: "game-maps/blackrock-mountain-depths.png"
-    caption: "Blackrock Mountain, lower level. The Blackrock Depths portal is at the top and Molten Core at the bottom."
-blackrock-depths-upper-city:
+    caption: "Blackrock Mountain, main level. Searing Gorge is at the top, Burning Steppes at the bottom, and the Blackrock Spire portal is on the right."
+blackrock-depths:
   - file: "game-maps/blackrock-mountain-main.png"
     caption: "Blackrock Mountain, main level, with the Searing Gorge and Burning Steppes entrances. The chain in the middle leads down to the lower level."
   - file: "game-maps/blackrock-mountain-depths.png"

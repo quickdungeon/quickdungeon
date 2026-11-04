@@ -1,5 +1,5 @@
 ---
-title: "Stormwind Stockade"
+title: "Stormwind Stockades"
 url: "/stormwind-stockade/"
 expansions:
   - "classic"
@@ -15,22 +15,28 @@ route:
   - label: "Map 1"
     blocks:
       - image: "images/stormwind-stockade-dungeon-map.jpg"
+review: "This guide was written for the retail version of this dungeon, which changed its bosses and, in places, its layout. The boss list now matches WoW Forever; the route maps and any tactics kept from the old guide haven’t been checked against it yet."
+bosses_note: "Numbers match the markers on the retail route maps. Bosses without a number aren’t marked on them, and most don’t have tactics yet."
 bosses:
-  - number: 1
-    name: "Lord Overheat"
-    image: "images/lord-overheat-model.jpg"
-    tactics:
-      - "Deals fire damage spells. Casts fireballs around the room."
-  - number: 2
-    name: "Randolph Moloch"
-    image: "images/randolph-moloch-model.jpg"
-    tactics:
-      - "Vanishes then reappears. Deals physical damage attacks, stabs current target."
-  - number: 3
-    name: "Hogger"
-    image: "images/hogger-model.jpg"
-    tactics:
-      - "Slices target dealing physical damage. Enrages at 30% increasing his speed & damage done, nuke boss. Interrupt Maddening Call."
+  - name: "Targorr the Dread"
+    image: "images/targorr-the-dread-wowhead.png"
+    tactics: []
+  - name: "Kam Deepfury"
+    image: "images/kam-deepfury-wowhead.png"
+    tactics: []
+  - name: "Hamhock"
+    image: "images/hamhock-wowhead.png"
+    tactics: []
+  - name: "Bazil Thredd"
+    image: "images/bazil-thredd-wowhead.png"
+    tactics: []
+  - name: "Dextren Ward"
+    image: "images/dextren-ward-wowhead.png"
+    tactics: []
+  - name: "Bruegal Ironknuckle"
+    tag: "rare"
+    image: "images/bruegal-ironknuckle-rare-wowhead.png"
+    tactics: []
 source:
   url: "https://web.archive.org/web/20241005154026/https://quickdungeon.com/stormwind-stockade/"
   captured: "2024-10-05"

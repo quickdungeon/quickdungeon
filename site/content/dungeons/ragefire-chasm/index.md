@@ -16,27 +16,21 @@ route:
   - label: "Map 1"
     blocks:
       - image: "images/ragefire-chasm-dungeon-map.jpg"
+review: "This guide was written for the retail version of this dungeon, which changed its bosses and, in places, its layout. The boss list now matches WoW Forever; the route maps and any tactics kept from the old guide haven’t been checked against it yet."
+bosses_note: "Numbers match the markers on the retail route maps. Bosses without a number aren’t marked on them, and most don’t have tactics yet."
 bosses:
-  - number: 1
-    name: "Adarogg"
-    image: "images/adarogg-model1.jpg"
-    tactics:
-      - "Charges at a random player, move out of the way. Breathes flames inflicting fire damage to a player."
-  - number: 2
-    name: "Dark Shaman Koranthal"
-    image: "images/dark-shaman-koranthal-model.jpg"
-    tactics:
-      - "Interrupt ‘Twisted Elements’. Avoid the purple swirls on the floor."
-  - number: 3
-    name: "Slagmaw"
-    image: "images/slagmaw-model.jpg"
-    tactics:
-      - "Spits lava at a players location. Get ready to attack when slagmaw emerges at a new location."
-  - number: 4
-    name: "Lava Guard Gordoth"
-    image: "images/lava-guard-gordoth-model.jpg"
-    tactics:
-      - "Group will take damage from ground attacks/knock backs. Enrages at 30% health increasing his speed & damage done, nuke boss."
+  - name: "Oggleflint"
+    image: "images/oggleflint-wowhead.png"
+    tactics: []
+  - name: "Taragaman the Hungerer"
+    image: "images/taragaman-the-hungerer-wowhead.png"
+    tactics: []
+  - name: "Jergosh the Invoker"
+    image: "images/jergosh-the-invoker-wowhead.png"
+    tactics: []
+  - name: "Bazzalan"
+    image: "images/bazzalan-wowhead.png"
+    tactics: []
 source:
   url: "https://web.archive.org/web/20241111035054/https://quickdungeon.com/ragefire-chasm/"
   captured: "2024-11-11"

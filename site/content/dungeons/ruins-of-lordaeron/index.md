@@ -21,18 +21,23 @@ route:
 bosses_note: "Listed in the order the game’s encounter table gives them, which may not be the order you meet them. Tactics haven’t been written yet."
 bosses:
   - name: "Witherfang"
+    image: "images/witherfang-wowhead.png"
     tactics: []
   - name: "The Abandoned"
+    image: "images/the-abandoned-wowhead.png"
     tactics: []
   - name: "The Butcher"
     tactics: []
   - name: "Rath'mael"
+    image: "images/rathmael-wowhead.png"
     tactics: []
   - name: "Lordaeron Captain"
     tactics: []
   - name: "Viktor the Vile"
+    image: "images/viktor-the-vile-wowhead.png"
     tactics: []
   - name: "Bjork"
+    image: "images/bjork-wowhead.png"
     tactics: []
 game_data:
   product: "WoW Forever"

@@ -30,20 +30,27 @@ route:
 bosses_note: "Listed in the order the game’s encounter table gives them, which may not be the order you meet them. Tactics haven’t been written yet."
 bosses:
   - name: "Arcane Anomaly"
+    image: "images/arcane-anomaly-wowhead.png"
     tactics: []
   - name: "Fel Ancient"
+    image: "images/fel-ancient-wowhead.png"
     tactics: []
   - name: "Mana Devourer"
+    image: "images/mana-devourer-wowhead.png"
     tactics: []
   - name: "Mana Elemental"
     tactics: []
   - name: "Unstable Sentinel"
+    image: "images/unstable-sentinel-wowhead.png"
     tactics: []
   - name: "Shade of the Archmage"
+    image: "images/shade-of-the-archmage-wowhead.png"
     tactics: []
   - name: "Lyn the Ignored"
+    image: "images/lyn-the-ignored-wowhead.png"
     tactics: []
   - name: "Atrexis the Grave Knight"
+    image: "images/atrexis-the-grave-knight-wowhead.png"
     tactics: []
   - name: "Mana Wraith"
     tactics: []

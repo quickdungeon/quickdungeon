@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{{- /* Redirect page for an old URL (front-matter aliases). The target is relative, like every
+     other link on the site, so a local or staging copy doesn't send visitors to the live domain. */}}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ .Page.Title }} | {{ site.Title }}</title>
+<link rel="canonical" href="{{ .Page.Permalink }}">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url={{ .Page.RelPermalink }}">
+</head>
+<body>
+<p>This guide has moved to <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>.</p>
+</body>
+</html>

@@ -21,12 +21,15 @@ route:
 bosses_note: "Listed in the order the game’s encounter table gives them, which may not be the order you meet them. Tactics haven’t been written yet."
 bosses:
   - name: "Faldrim Anvilmar"
+    image: "images/faldrim-anvilmar-wowhead.png"
     tactics: []
   - name: "Infurnus"
     tactics: []
   - name: "Plunder"
+    image: "images/plunder-wowhead.png"
     tactics: []
   - name: "Durgen Dirgehammer"
+    image: "images/durgen-dirgehammer-wowhead.png"
     tactics: []
 game_data:
   product: "WoW Forever"

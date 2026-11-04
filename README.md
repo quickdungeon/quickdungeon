@@ -64,10 +64,13 @@ classic/                   the raw recovered archive (original HTML + images); n
 artist-maps/               unmodified originals of third-party maps (Santiago Reyes); not deployed
 game-maps/                 maps extracted from the WoW Forever client (entrance areas, new-dungeon overviews)
 tools/                     archive downloader, archive-to-Hugo converter, game-file extraction tools
+REVIEW.md                  guides changed to match WoW Forever that still need checking
 ```
 
 Guide URLs match the old WordPress site (`/shadowfang-keep/`), so old links and search
-results keep working if the domain comes back.
+results keep working if the domain comes back. Guides that were merged or split to match
+WoW Forever list their old URLs under `aliases:`, which Hugo turns into redirect pages (for
+example `/maraudon-foulspore-cavern/` goes to `/maraudon/`).
 
 ## Editing guides
 
@@ -89,15 +92,19 @@ route:                # one entry per route map, shown as steps
     blocks:
       - text: "Optional instructions for this map"
       - image: "images/shadowfang-keep-dungeon-map-1.jpg"
+review: "..."         # optional: a notice under the title (see REVIEW.md)
 bosses:
-  - number: 1         # matches the marker drawn on the route map
-    name: "Baron Ashbury"
-    tag: "optional"   # optional, or "heroic" for heroic-only bosses
-    image: "images/baron-ashbury-model.jpg"
+  - number: 2         # matches the marker drawn on the route map; leave out if it isn't marked
+    name: "Baron Silverlaine"
+    part: "Upper City"  # optional: which part of a merged dungeon (Maraudon, Blackrock Depths)
+    tag: "rare"       # optional: optional, rare, event, heroic, or any short label ("Warlock quest")
+    image: "images/baron-silverlaine-model.jpg"
     tactics:
-      - "Group make sure healed & ready for Asphyxiate..."   # shown and copied as "/i ..."
-    heroic: "When finishes Asphyxiate will cast Stay of Execution..."
+      - "Curses his targets with Veil of Shadow..."   # shown and copied as "/i ..."
 ```
+
+Boss names follow Wowhead's WoW Forever Dungeon Journal, with the spelling from the game
+files where the two disagree. REVIEW.md has the details.
 
 Images go in the guide's `images/` folder. Hugo converts them to WebP and makes the list
 thumbnails. If a front-matter path points at a missing image, the dev server prints a
@@ -125,6 +132,14 @@ downloaded yet. To add an expansion:
 
 The converter needs Python with `beautifulsoup4` and `lxml`, which nest the WordPress markup
 the same way a browser does.
+
+## Boss portraits (Wowhead)
+
+Most boss portraits come from [Wowhead's WoW Forever Dungeon Journal](https://www.wowhead.com/forever/dungeon-journal)
+(saved as `images/<boss>-wowhead.png` in each guide, resized to 200×200). Wowhead hosts them as
+guide images, and one (Shade of Eranikus) is Blizzard's own render from
+render.worldofwarcraft.com. A guide that uses any of them shows a credit line under the boss list
+automatically. As with the guide text, get permission before hosting these publicly.
 
 ## Third-party maps (credit required)
 

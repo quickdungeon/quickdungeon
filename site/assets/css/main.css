@@ -294,7 +294,7 @@ kbd { font: inherit; }
 }
 .boss:first-child { border-top: 0; padding-top: 0; }
 .boss--no-portrait { grid-template-columns: minmax(0, 1fr); }
-.boss-portrait { width: 4.5rem; height: 4.5rem; border-radius: var(--radius); border: 1px solid var(--line); }
+.boss-portrait { width: 4.5rem; height: 4.5rem; object-fit: contain; background: var(--panel); border-radius: var(--radius); border: 1px solid var(--line); }
 .boss-body { display: grid; gap: 0.55rem; align-content: start; }
 .boss-name {
   color: var(--gold); font-weight: 700; font-stretch: var(--wide);
@@ -328,10 +328,13 @@ kbd { font: inherit; }
   from { background: color-mix(in srgb, var(--chat) 32%, transparent); }
   to { background: color-mix(in srgb, var(--chat) 9%, transparent); }
 }
+.review-note { margin-top: 1rem; border-color: var(--chat); color: var(--text); }
+.boss-part { color: var(--text); }
 .heroic { color: var(--muted); font-size: 0.9375rem; max-width: 62ch; }
 .heroic-label { color: var(--text); font-weight: 700; }
 
 .guide-source { margin-top: 3rem; color: var(--muted); font-size: 0.9375rem; }
+.guide-source + .guide-source { margin-top: 0.5rem; }
 
 /* two columns on wide screens: the route map stays put while the boss list scrolls */
 @media (min-width: 1100px) {

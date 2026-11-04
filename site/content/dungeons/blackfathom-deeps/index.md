@@ -25,46 +25,35 @@ route:
   - label: "Map 3"
     blocks:
       - image: "images/blackfathom-deeps-dungeon-map3.jpg"
+review: "This guide was written for the retail version of this dungeon, which changed its bosses and, in places, its layout. The boss list now matches WoW Forever; the route maps and any tactics kept from the old guide haven’t been checked against it yet."
+bosses_note: "Numbers match the markers on the retail route maps. Bosses without a number aren’t marked on them, and most don’t have tactics yet."
 bosses:
   - number: 1
-    name: "Ghamoo-Ra"
-    image: "images/ghamoo-ra-model.jpg"
+    name: "Ghamoo-ra"
+    image: "images/ghamoo-ra-wowhead.png"
     tactics:
       - "Move out way of lightning pool on ground, spins around then charges forward. Hits random targets with static during fight."
-  - number: 2
-    name: "Domina"
-    image: "images/domina-model.jpg"
-    tactics:
-      - "Avoid standing in Maw of Death (purple line on floor). Run away from Foul Tempest (hit with green bolts)."
-  - number: 3
-    name: "Subjugator Kor'ul"
-    image: "images/subjugator-korul-model.jpg"
-    tactics:
-      - "Grabs a player with Leviathan’s Grip. Summons tentacles to hit ground (move out of the crumbling floor)."
-  - number: 4
-    name: "Thruk"
-    image: "images/thruk-model.jpg"
-    tactics:
-      - "Pulls in & roots a player in a fishing net. Casts Fillet of Flesh smashing the ground around him, move away."
-  - number: 5
-    name: "Executioner Gore"
-    image: "images/executioner-gore-model.jpg"
-    tactics:
-      - "Strikes the floor, move out of purple line. Avoid standing in the purple circles left on ground. Devouring Blackness grabs a player draining their health, interrupt this."
-  - number: 0
-    name: "Guardian of the Deep"
-    tag: "optional"
-    image: "images/guardian-of-the-deep-model.jpg"
-    tactics:
-      - "Does aoe damage with Shattering Song (circle echoes out). Spore Cloud summons adds. Heals himself when eats a Blue Shale Crawler."
-  - number: 6
-    name: "Twilight Lord Bathiel"
-    image: "images/twilight-lord-bathiel-model.jpg"
-    tactics:
-      - "Restorative Waters summons adds then boss absorbs them to heal, kill what you can. Run away from Piercing Rain, ice shards fall & follow enemies."
+  - name: "Lady Sarevess"
+    image: "images/lady-sarevess-wowhead.png"
+    tactics: []
+  - name: "Gelihast"
+    image: "images/gelihast-wowhead.png"
+    tactics: []
+  - name: "Lorgus Jett"
+    tactics: []
+  - name: "Twilight Lord Kelris"
+    image: "images/twilight-lord-kelris-wowhead.png"
+    tactics: []
+  - name: "Fire of Aku'mai"
+    tag: "event"
+    image: "images/fire-of-akumai-event-wowhead.png"
+    tactics: []
+  - name: "Old Serra'kis"
+    image: "images/old-serrakis-wowhead.png"
+    tactics: []
   - number: 7
-    name: "Aku'mai the Devourer"
-    image: "images/akumai-model.jpg"
+    name: "Aku'mai"
+    image: "images/akumai-wowhead.png"
     tactics:
       - "Move around to avoid damage from falling rocks. Tearing the Void summons tenticles to hit ground (move out of the crumbling floor)."
 source:

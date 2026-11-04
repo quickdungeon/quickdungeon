@@ -21,32 +21,58 @@ route:
   - label: "Map 3"
     blocks:
       - image: "images/scholomance-dungeon-map3.jpg"
+review: "This guide was written for the retail version of this dungeon, which changed its bosses and, in places, its layout. The boss list now matches WoW Forever; the route maps and any tactics kept from the old guide haven’t been checked against it yet."
+bosses_note: "Numbers match the markers on the retail route maps. Bosses without a number aren’t marked on them, and most don’t have tactics yet."
 bosses:
-  - number: 1
-    name: "Instructor Chillheart"
-    image: "images/instructor-chillheart-model.jpg"
-    tactics:
-      - "Inflicts frost damage to players. Move away from Ice Wall, kill boss before you run out of room. When boss dies kill the phylactery & avoid standing under the floating books."
-    heroic: "Wrack Soul inflicts shadow damage to a player, jumps to others."
+  - name: "Blood Steward of Kirtonos"
+    image: "images/blood-steward-of-kirtonos-wowhead.png"
+    tactics: []
+  - name: "Kirtonos"
+    image: "images/kirtonos-the-herald-wowhead.png"
+    tactics: []
   - number: 2
     name: "Jandice Barov"
-    image: "images/jandice-barov-model.jpg"
+    image: "images/jandice-barov-wowhead.png"
     tactics:
       - "Move from arcane cone Wondrous Rapidity. At 33% & 66% boss will hide behind an illusion, kill them."
-    heroic: "Gravity Flux inflicts shadow damage to all that enter & knocks back, avoid this. Killing the wrong illusions inflicts arcane damage to party."
   - number: 3
     name: "Rattlegore"
-    image: "images/rattlegore-model.jpg"
+    image: "images/rattlegore-wowhead.png"
     tactics:
       - "Pick up Bone Armor (click the piles of bones on floor), these absorb one Bone Spike, helps the healer out. Avoid blue flame patches. Tank will be hit with Rusting, this stacks."
-  - number: 4
-    name: "Lilian Voss"
-    image: "images/lilian-voss-model.jpg"
-    tactics:
-      - "Pulled in with Death’s Grasp, move back out & run the pink fire patches around outside of room. Run away from boss if you get Fixate Anger."
+  - name: "Marduk Blackpool"
+    image: "images/marduk-blackpool-wowhead.png"
+    tactics: []
+  - name: "Vectus"
+    image: "images/vectus-wowhead.png"
+    tactics: []
+  - name: "Ras Frostwhisperer"
+    image: "images/ras-frostwhisper-wowhead.png"
+    tactics: []
+  - name: "Kormok"
+    image: "images/kormok-wowhead.png"
+    tactics: []
+  - name: "Instructor Malicia"
+    image: "images/instructor-malicia-wowhead.png"
+    tactics: []
+  - name: "Doctor Theolen Krastinov"
+    image: "images/doctor-theolen-krastinov-wowhead.png"
+    tactics: []
+  - name: "Lorekeeper Polkelt"
+    image: "images/lorekeeper-polkelt-wowhead.png"
+    tactics: []
+  - name: "The Ravenian"
+    image: "images/the-ravenian-wowhead.png"
+    tactics: []
+  - name: "Lord Alexei Barov"
+    image: "images/lord-alexei-barov-wowhead.png"
+    tactics: []
+  - name: "Lady Illucia Barov"
+    image: "images/lady-illucia-barov-wowhead.png"
+    tactics: []
   - number: 5
     name: "Darkmaster Gandling"
-    image: "images/darkmaster-gandling-model.jpg"
+    image: "images/darkmaster-gandling-wowhead.png"
     tactics:
       - "Inflicts fire damage to players. He summons adds but keep attacking boss. Watch for Harsh Lesson a random player will be teleported to a study room, kill mobs & make your way back."
 source:

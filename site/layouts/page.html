@@ -14,6 +14,9 @@
       {{ .Params.summary }}
       {{- end }}
     </p>
+    {{- with .Params.review }}
+    <p class="callout review-note">{{ . }}</p>
+    {{- end }}
   </header>
 
   {{- with .Params.entrance }}
@@ -46,7 +49,8 @@
 
     <section class="bosses" aria-labelledby="bosses-title">
       <h2 id="bosses-title">Bosses</h2>
-      <p class="bosses-hint">{{ .Params.bosses_note | default "Numbers match the boss markers on the route maps." }}</p>
+      {{- $unmarked := where .Params.bosses "number" "==" nil }}
+      <p class="bosses-hint">{{ .Params.bosses_note | default (printf "Numbers match the boss markers on the route maps.%s" (cond (gt (len $unmarked) 0) " Bosses without a number aren’t marked on them." "")) }}</p>
       <ol class="boss-list">
         {{- range $i, $b := .Params.bosses }}
         <li class="boss{{ if not .image }} boss--no-portrait{{ end }}" id="boss-{{ add $i 1 }}">
@@ -55,7 +59,8 @@
             <h3 class="boss-name">
               {{- if isset . "number" }}<span class="boss-n">{{ .number }}</span>{{ end }}
               <span>{{ .name }}</span>
-              {{- with .tag }}<span class="boss-tag">{{ if eq . "optional" }}Optional{{ else }}Heroic only{{ end }}</span>{{ end -}}
+              {{- with .part }}<span class="boss-tag boss-part">{{ . }}</span>{{ end }}
+              {{- with .tag }}<span class="boss-tag">{{ index (dict "optional" "Optional" "heroic" "Heroic only" "rare" "Rare" "event" "Event") . | default . }}</span>{{ end -}}
             </h3>
             {{- range .tactics }}
             <div class="chat">
@@ -76,6 +81,24 @@
   {{- with .Params.source }}
   <footer class="guide-source">
     <p>From the original quickdungeon.com guide{{ with .captured }}, as archived on {{ time.Format "2 January 2006" . }}{{ end }}.{{ with .url }} <a href="{{ . }}">View the archived page</a>.{{ end }}</p>
+  </footer>
+  {{- end }}
+  {{- with .Params.sources }}
+  <footer class="guide-source">
+    <p>Combined from the original quickdungeon.com guides:
+    {{- range $i, $s := . }}{{ if $i }};{{ end }} <a href="{{ $s.url }}">{{ $s.title }}</a>{{ with $s.captured }} (archived {{ time.Format "2 January 2006" . }}){{ end }}{{ end }}.</p>
+  </footer>
+  {{- end }}
+  {{- $journal := false }}
+  {{- range .Params.bosses }}{{ if strings.Contains (.image | default "") "-wowhead." }}{{ $journal = true }}{{ end }}{{ end }}
+  {{- if $journal }}
+  <footer class="guide-source">
+    <p>Boss portraits from <a href="https://www.wowhead.com/forever/dungeon-journal">Wowhead’s WoW Forever Dungeon Journal</a>.</p>
+  </footer>
+  {{- end }}
+  {{- with .Params.bosses_from }}
+  <footer class="guide-source">
+    <p>The boss list comes from {{ . }}.</p>
   </footer>
   {{- end }}
   {{- with .Params.game_data }}

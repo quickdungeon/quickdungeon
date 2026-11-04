@@ -45,7 +45,7 @@
       {{- $words := slice .Title $exp.name }}
       {{- with .Params.zone }}{{ $words = $words | append . }}{{ end }}
       {{- with .Params.continent }}{{ $words = $words | append . }}{{ end }}
-      {{- range .Params.bosses }}{{ $words = $words | append .name }}{{ end }}
+      {{- range .Params.bosses }}{{ $words = $words | append .name }}{{ with .part }}{{ $words = $words | append . }}{{ end }}{{ end }}
     <li class="dungeon" data-search="{{ delimit $words " " | lower | replaceRE `['’‘]` "" }}">
       <a class="dungeon-link" href="{{ .RelPermalink }}">
         <span class="dungeon-thumb">

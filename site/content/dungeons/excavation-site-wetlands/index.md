@@ -21,12 +21,15 @@ route:
 bosses_note: "Listed in the order the game’s encounter table gives them, which may not be the order you meet them. Tactics haven’t been written yet."
 bosses:
   - name: "Saltspine"
+    image: "images/saltspine-wowhead.png"
     tactics: []
   - name: "Shadetooth"
+    image: "images/shadetooth-wowhead.png"
     tactics: []
   - name: "Highland Horror"
     tactics: []
   - name: "Relic Guardian"
+    image: "images/relic-guardian-wowhead.png"
     tactics: []
 game_data:
   product: "WoW Forever"

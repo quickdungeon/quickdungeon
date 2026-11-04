@@ -20,39 +20,46 @@ route:
 bosses:
   - number: 1
     name: "Theka the Martyr"
-    image: "images/theka-the-martyr-model.jpg"
+    image: "images/theka-the-martyr-wowhead.png"
     tactics:
       - "Careful of using aoe by all the Scarabs. Interrupt Fevered Plague. At 30% transforms making him immune to physical & shadow damage."
   - number: 2
     name: "Antu'sul"
-    image: "images/antusul-model.jpg"
+    image: "images/antusul-wowhead.png"
     tactics:
       - "Kill the Sul’lithuz Broodling adds first. Kill the Greater Healing Ward & Earthgrab Totems. Boss uses variety of shaman spells. At 75% & 25% summons servants to fight, kill them quickly."
   - number: 3
     name: "Witch Doctor Zum'rah"
-    image: "images/witch-doctor-zumrah-model.jpg"
+    image: "images/witch-doctor-zumrah-wowhead.png"
     tactics:
       - "Raises zombies from nearby graves. Kill the Ward of Zum’rah totem before it summons adds. Can interrupt Healing Wave, Shadow Bolt & Shadow Bolt Volley."
   - number: 4
-    name: "Nekrum & Sezz'ziz"
-    image: "images/nekrum-sezzziz-model.jpg"
+    name: "Nekrum Gutchewer & Shadowpriest Sezz'ziz"
+    image: "images/nekrum-gutchewer-shadowpriest-sezzziz-wowhead.png"
     tactics:
       - "The prisoners help you fight the trolls & bosses. Nekrum: Interrupt Fevered Plague. Sezz’ziz: Can interrupt Shadow Bolt, Renew & Heal. Psychic Scream causes nearby players to flee."
+  - name: "Sergeant Bly"
+    image: "images/sergeant-bly-wowhead.png"
+    tactics: []
   - number: 5
     name: "Hydromancer Velratha"
-    image: "images/hydromancer-velratha-model.jpg"
+    image: "images/hydromancer-velratha-wowhead.png"
     tactics:
       - "Patrols around. Interrupt Healing Wave & Water Bolt. Avoid the blue wave (frontal cone)."
   - number: 6
     name: "Gahz'rilla"
-    image: "images/gahzrilla-model.jpg"
+    image: "images/gahzrilla-wowhead.png"
     tactics:
       - "Shoots Icicle which slows players movement speed. Freezes players with Freeze Solid. Move away from his slam."
   - number: 7
     name: "Chief Ukorz Sandscalp"
-    image: "images/chief-ukorz-sandscalp-model.jpg"
+    image: "images/chief-ukorz-sandscalp-wowhead.png"
     tactics:
       - "Boss fights with Ruuzlu. Inflicts physical damage to players in front & nearest targets. Frenzy increases his attack speed by 60%."
+  - name: "Zerillis"
+    tag: "rare"
+    image: "images/zerillis-rare-wowhead.png"
+    tactics: []
 source:
   url: "https://web.archive.org/web/20240805091819/https://quickdungeon.com/zulfarrak/"
   captured: "2024-08-05"

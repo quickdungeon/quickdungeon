@@ -21,27 +21,27 @@ route:
 bosses:
   - number: 1
     name: "Guard Mol'dar"
-    image: "images/guard-moldar-model.jpg"
+    image: "images/guard-moldar-wowhead.png"
     tactics:
       - "His attacks cause physical damage. Shield Charge knock a player back. Calls for help at 50%. Goes into Frenzy."
   - number: 2
     name: "Stomper Kreeg"
-    image: "images/stomper-kreeg-model.jpg"
+    image: "images/stomper-kreeg-wowhead.png"
     tactics:
       - "Knocks back with War Stomp. Avoid front cone Booze Spit which reduces chance to hit by 75%. Drunken Rage increases his speed. Goes into Frenzy."
   - number: 3
     name: "Guard Fengus"
-    image: "images/guard-fengus-model.jpg"
+    image: "images/guard-fengus-wowhead.png"
     tactics:
       - "Try clearing surrounding mobs before boss fight. His attacks deal physical damage. Shield Charge knock a player back. Calls for help at 50%. Goes into Frenzy."
   - number: 4
     name: "Guard Slip'kik"
-    image: "images/guard-slipkik-model.jpg"
+    image: "images/guard-slipkik-wowhead.png"
     tactics:
       - "Shield Charge knock a player back. His attacks deal physical damage. Shield Charge knock a player back. Calls for help at 50%. Goes into Frenzy."
   - number: 5
     name: "Captain Kromcrush"
-    image: "images/captain-kromcrush-model.jpg"
+    image: "images/captain-kromcrush-wowhead.png"
     tactics:
       - "During Mortal Cleave players healing will be reduced by 50%. Fears players. At 50% health boss summons 2 Gordok Reavers to fight."
   - number: 6
@@ -51,7 +51,7 @@ bosses:
       - "He will randomly choose a class, he will either be a priest, shaman, or mage. He will have healing spells on priest & shaman."
   - number: 7
     name: "King Gordok"
-    image: "images/king-gordok-model.jpg"
+    image: "images/king-gordok-chorush-the-observer-wowhead.png"
     tactics:
       - "During Mortal Strike players healing will be reduced by 50%. War Stomp stuns nearby players. Knocks a random player in air dealing physical damage."
 source:

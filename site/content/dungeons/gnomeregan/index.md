@@ -18,7 +18,7 @@ entrance:
 route:
   - label: "Map 1"
     blocks:
-      - text: "Be aware that often LFD groups skip first boss and head straight for the parachute to the 2nd boss below."
+      - text: "Be aware that groups often skip the first boss and head straight for the parachute to the 2nd boss below."
       - image: "images/gnomeregan-dungeon-map1.jpg"
   - label: "Map 2"
     blocks:
@@ -34,29 +34,33 @@ route:
 bosses:
   - number: 1
     name: "Grubbis"
-    image: "images/grubbis-model.jpg"
+    image: "images/grubbis-wowhead.png"
     tactics:
       - "Start fight by talking to Blastmaster Emi Shortfuse at back of room. Deal with waves of mobs in tunnel before boss appears. Grubbis & his pet Chomper deal physical attacks."
   - number: 2
     name: "Viscous Fallout"
-    image: "images/viscous-fallout-model.jpg"
+    image: "images/viscous-fallout-wowhead.png"
     tactics:
       - "Careful of mobs nearby before pulling boss. Group gets poison ticks on them."
   - number: 3
     name: "Electrocutioner 6000"
-    image: "images/electrocutioner-6000-model.jpg"
+    image: "images/electrocutioner-6000-wowhead.png"
     tactics:
       - "Casts Shock on target, dealing nature damage. Interrupt Megavolt. Interrupt Chain Bolt."
   - number: 4
     name: "Crowd Pummeler 9-60"
-    image: "images/crowd-pummeler-model.jpg"
+    image: "images/crowd-pummeler-9-60-wowhead.png"
     tactics:
       - "Boss deals physical damage attacks. Avoid front attack Arcing Smash."
   - number: 5
     name: "Mekgineer Thermaplugg"
-    image: "images/mekgineer-thermaplugg-model.jpg"
+    image: "images/mekgineer-thermaplugg-wowhead.png"
     tactics:
       - "Interrupt Steam Blast. Interrupt Welding Beam. Keep moving to avoid Walking Bombs."
+  - name: "Dark Iron Ambassador"
+    tag: "rare"
+    image: "images/dark-iron-ambassador-rare-wowhead.png"
+    tactics: []
 source:
   url: "https://web.archive.org/web/20241111041646/https://quickdungeon.com/gnomeregan/"
   captured: "2024-11-11"

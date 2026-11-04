@@ -31,43 +31,43 @@ route:
 bosses:
   - number: 1
     name: "Lady Anacondra"
-    image: "images/lady-anacondra-model.jpg"
+    image: "images/lady-anacondra-wowhead.png"
     tactics:
       - "Uses sleep spell on a player. Casts lightning bolt on current target. Uses Healing Touch."
   - number: 2
     name: "Lord Pythas"
-    image: "images/lord-pythas-model.jpg"
+    image: "images/deviate-faerie-dragon-wowhead.png"
     tactics:
       - "Uses sleep spell on a player. Casts lightning bolt on current target. Uses Healing Touch."
   - number: 3
     name: "Lord Cobrahn"
-    image: "images/lord-cobrahn-model.jpg"
+    image: "images/lord-cobrahn-wowhead.png"
     tactics:
       - "Turns into a serpent. Uses sleep spell on a player. Casts lightning bolt on current target. Uses Healing Touch."
   - number: 0
     name: "Kresh"
     tag: "optional"
-    image: "images/kresh-model.jpg"
+    image: "images/kresh-wowhead.png"
     tactics:
       - "Drops a shield. Bites current target reducing their armor."
   - number: 4
     name: "Skum"
-    image: "images/skum-model.jpg"
+    image: "images/skum-wowhead.png"
     tactics:
       - "Uses Chained Bolt hitting other nearby players."
   - number: 5
     name: "Lord Serpentis"
-    image: "images/lord-serpentis-model.jpg"
+    image: "images/lord-serpentis-wowhead.png"
     tactics:
       - "Uses sleep spell on a player. Casts lightning bolt on current target. Uses Healing Touch."
   - number: 6
     name: "Verdan the Everliving"
-    image: "images/verdan-the-everliving-model.jpg"
+    image: "images/verdan-the-everliving-wowhead.png"
     tactics:
       - "Inflicts physical damage rooting players & knocks them down."
   - number: 7
     name: "Mutanus the Devourer"
-    image: "images/mutanus-the-devourer-model.jpg"
+    image: "images/mutanus-the-devourer-wowhead.png"
     tactics:
       - "Kill the waves of adds, then boss will appear. Can stun, fear & sleep players."
 source:

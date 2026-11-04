@@ -22,42 +22,36 @@ route:
   - label: "Map 2"
     blocks:
       - image: "images/deadmines-dungeon-map-22.jpg"
+review: "This guide was written for the retail version of this dungeon, which changed its bosses and, in places, its layout. The boss list now matches WoW Forever; the route maps and any tactics kept from the old guide haven’t been checked against it yet."
+bosses_note: "Numbers match the markers on the retail route maps. Bosses without a number aren’t marked on them, and most don’t have tactics yet."
 bosses:
-  - number: 1
-    name: "Glubtok"
-    image: "images/glubtok-model.jpg"
-    tactics:
-      - "Boss will Blink teleporting to a new location. Avoid blossoms launched around room."
-    heroic: "Fire & Frost Blossoms summon mobs when land. Avoid rotating Fire Wall."
-  - number: 2
-    name: "Helix Gearbreaker"
-    image: "images/helix-gearbreaker-model.jpg"
-    tactics:
-      - "Kill Oath he’s riding then Goblin. Watch out for Sticky Bomb, avoid these on ground."
-    heroic: "Stay apart from each other in case get a Chest Bomb on you. Helix Crew appear above throwing Sticky Bombs at random players."
-  - number: 3
-    name: "Foe Reaper 5000"
-    image: "images/foe-reaper-5000-model.jpg"
-    tactics:
-      - "To activate boss kill all the other foe reapers. Boss deals physical damage, try to avoid attacks."
-    heroic: "Activation of Foe Reaper causes overload in pit spawning Molten Slags to fight, jump into a Prototype Reaper to attack."
-  - number: 4
-    name: "Admiral Ripsnarl"
-    image: "images/admiral-ripsnarl-model.jpg"
-    tactics:
-      - "Avoid melee attacks. During Fog kill the Vapors. Be ready to target boss when he reappears."
-    heroic: "When boss below 10% health 3 more Vapors appear."
+  - name: "Rhahk'Zor"
+    image: "images/rhahkzor-wowhead.png"
+    tactics: []
+  - name: "Sneed"
+    image: "images/sneeds-shredder-wowhead.png"
+    tactics: []
+  - name: "Gilnid"
+    image: "images/gilnid-wowhead.png"
+    tactics: []
+  - name: "Mr. Smite"
+    image: "images/mr-smite-wowhead.png"
+    tactics: []
+  - name: "Captain Greenskin"
+    image: "images/captain-greenskin-wowhead.png"
+    tactics: []
+  - name: "Edwin VanCleef"
+    image: "images/edwin-vancleef-wowhead.png"
+    tactics: []
   - number: 5
-    name: "'Captain' Cookie"
-    image: "images/captain-cookie-model.jpg"
+    name: "Cookie"
+    image: "images/cookie-wowhead.png"
     tactics:
       - "Attack when boss is inside the cauldron, nuke him. Can pick up gold foods, avoid green foods."
-  - number: 6
-    name: "Vanessa VanCleef"
-    tag: "heroic"
-    image: "images/vanessa-vancleef-model.jpg"
-    tactics:
-      - "You will be transported into waves of nightmares to fight your way through. When she casts Fiery Blaze to detonate explosives around ship run to a rope & swing to safety (ropes by edge of ship on floor). Calls Defias mobs to aid her."
+  - name: "Miner Johnson"
+    tag: "rare"
+    image: "images/miner-johnson-rare-wowhead.png"
+    tactics: []
 source:
   url: "https://web.archive.org/web/20240918171128/https://quickdungeon.com/deadmines/"
   captured: "2024-09-18"

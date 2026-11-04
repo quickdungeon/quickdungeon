@@ -5,8 +5,6 @@
 # Source: WoW Forever's Group Finder listing board (it has no Dungeon Finder queue), i.e. the
 # GroupFinderActivity table's MinLevel to MaxLevelSuggestion (wowf build 1.60.1.70707, CSV from
 # https://wago.tools/db2/GroupFinderActivity/csv?build=1.60.1.70707).
-# Where a guide covers a retail split or merge of classic wings, the range spans the
-# Group Finder entries it covers (noted below).
 classic:
   ragefire-chasm: "13–18"
   deadmines: "17–26"
@@ -15,12 +13,7 @@ classic:
   blackfathom-deeps: "24–32"
   stormwind-stockade: "24–32"
   gnomeregan: "29–38"
-  scarlet-halls: "33–44"                    # Library 33–41 + Armory 36–44
-  scarlet-monastery: "30–46"                # Graveyard 30–38 + Cathedral 38–46
-  maraudon-the-wicked-grotto: "46–55"       # the Group Finder has one Maraudon entry
   razorfen-kraul: "29–38"
-  maraudon-foulspore-cavern: "46–55"
-  maraudon-earth-song-falls: "46–55"
   uldaman: "41–51"
   dire-maul-warpwood-quarter: "54–60"       # Dire Maul (East)
   scholomance: "58–60"
@@ -30,10 +23,15 @@ classic:
   stratholme-main-gate: "58–60"
   zulfarrak: "44–54"
   stratholme-service-entrance: "58–60"      # Stratholme (Service Gate)
-  blackrock-depths-detention-block: "52–60" # the Group Finder has one Blackrock Depths entry
   the-temple-of-atalhakkar: "50–60"         # Sunken Temple (the 5-player dungeon entry)
-  blackrock-depths-upper-city: "52–60"
   lower-blackrock-spire: "55–60"
+  scarlet-monastery-graveyard: "30–38"
+  scarlet-monastery-library: "33–41"
+  scarlet-monastery-armory: "36–44"
+  scarlet-monastery-cathedral: "38–46"
+  maraudon: "46–55"
+  blackrock-depths: "52–60"
+  upper-blackrock-spire: "59–60"            # listed for 10 players
 forever:
   city-of-dalaran: "28–35"
   ruins-of-lordaeron: "15–22"
