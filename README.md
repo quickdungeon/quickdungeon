@@ -13,6 +13,17 @@ still needs checking), and the site adds pages for WoW Forever's four new dungeo
 text and annotated route maps are the original Quick Dungeon author's work. The game maps,
 icons and boss portraits are built on Blizzard's game art.
 
+## Contributing
+
+Any and all contributions are welcome: new or corrected routes and tactics, fixes for the
+guides listed in `REVIEW.md`, missing entrance directions, or changes to the site itself.
+
+Please keep to the spirit of the original site: every route and tactic should be as simple
+as possible. They mostly serve as reminders for a group that's already in the dungeon, not
+full strategy guides. A tactic is a line or two you could paste into instance chat. A route
+is the path on the map, with a short note only where the way isn't obvious.
+[Editing guides](#editing-guides) explains how a guide is put together.
+
 ## Run it
 
 You need Docker with Compose.
@@ -147,29 +158,6 @@ files where the two disagree. REVIEW.md has the details.
 Images go in the guide's `images/` folder. Hugo converts them to WebP and makes the list
 thumbnails. If a front-matter path points at a missing image, the dev server prints a
 warning and the Docker build fails, naming the file.
-
-## Adding the other expansions
-
-The archive has ~100 more guides (Burning Crusade through The War Within) that haven't been
-downloaded yet. To add an expansion:
-
-1. Download it: `python3 -I tools/qd_fetch.py <dir> tools/capture-timestamps.txt <slug> ...`,
-   then `python3 -I tools/qd_index.py <dir> <slug> ...` (slugs are the page paths in
-   `tools/capture-timestamps.txt`).
-2. Convert it: `python3 -I tools/convert_to_hugo.py <dir> site <id> "<Name>"`. This writes
-   the page bundles and `site/data/expansions/<id>.yaml`.
-3. Add the expansion's level ranges to `site/data/levels.yaml`. For dungeons that are in
-   WoW Forever, use its Group Finder's range (the source is noted at the top of the file).
-   For later expansions, the original site's
-   [2017 home page](https://web.archive.org/web/20170622163054/http://quickdungeon.com/)
-   lists the retail ranges up to Legion. If a guide has no range, the dev server prints a
-   warning and the Docker build fails, naming the guide.
-4. Rebuild. A guide that's in more than one expansion (Deadmines and Shadowfang Keep are
-   listed under both Classic and Cataclysm) only needs one page bundle; list its slug in
-   each expansion's data file.
-
-The converter needs Python with `beautifulsoup4` and `lxml`, which nest the WordPress markup
-the same way a browser does.
 
 ## Boss portraits (Wowhead)
 
