@@ -16,7 +16,7 @@ timeZone = "UTC"
   # Cloudflare Web Analytics site token: the "token" in the JS snippet under Cloudflare dashboard >
   # Web Analytics > Manage site. Empty means no analytics. Only production builds include the
   # script (the Hugo dev server never does). The token is public: it ends up in every page.
-  cloudflareAnalyticsToken = ""
+  cloudflareAnalyticsToken = "d5f8a267e2fd438eb78555ce17a87c9e"
 
 [imaging]
   quality = 80

@@ -3,5 +3,5 @@
        Caddyfile) allows its script from static.cloudflareinsights.com and its reports to
        cloudflareinsights.com. */}}
 {{- with site.Params.cloudflareAnalyticsToken }}{{ if hugo.IsProduction }}
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{{ dict "token" . | jsonify }}"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{{ dict "token" . | jsonify }}"></script>
 {{- end }}{{ end }}
