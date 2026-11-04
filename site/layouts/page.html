@@ -78,26 +78,5 @@
     </section>
   </div>
 
-  {{- with .Params.source }}
-  <footer class="guide-source">
-    <p>From the original quickdungeon.com guide{{ with .captured }}, as archived on {{ time.Format "2 January 2006" . }}{{ end }}.{{ with .url }} <a href="{{ . }}">View the archived page</a>.{{ end }}</p>
-  </footer>
-  {{- end }}
-  {{- with .Params.sources }}
-  <footer class="guide-source">
-    <p>Combined from the original quickdungeon.com guides:
-    {{- range $i, $s := . }}{{ if $i }};{{ end }} <a href="{{ $s.url }}">{{ $s.title }}</a>{{ with $s.captured }} (archived {{ time.Format "2 January 2006" . }}){{ end }}{{ end }}.</p>
-  </footer>
-  {{- end }}
-  {{- with .Params.bosses_from }}
-  <footer class="guide-source">
-    <p>The boss list comes from {{ . }}.</p>
-  </footer>
-  {{- end }}
-  {{- with .Params.game_data }}
-  <footer class="guide-source">
-    <p>The boss list {{ if .map }}and the overview map come{{ else }}comes{{ end }} from the {{ .product }} game files (build {{ .build }}). The original quickdungeon.com didn’t cover this dungeon.</p>
-  </footer>
-  {{- end }}
 </article>
 {{ end }}
