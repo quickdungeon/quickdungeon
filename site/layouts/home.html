@@ -1,6 +1,6 @@
 {{ define "main" }}
 <section class="hero" aria-labelledby="site-title">
-  <h1 class="wordmark" id="site-title">{{ partial "mark.html" . }}Quick Dungeon</h1>
+  <h1 class="wordmark" id="site-title">{{ partial "mark.html" (dict "size" 72) }}Quick Dungeon</h1>
   <p class="lede">Tank routes and quick boss tactics for World of Warcraft dungeons. Each guide has the route maps in order and a one-line tactic for every boss, ready to paste into instance chat.</p>
   <div class="search" hidden>
     <label class="visually-hidden" for="q">Find a dungeon by dungeon, zone or boss name</label>

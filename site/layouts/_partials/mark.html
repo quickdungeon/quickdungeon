@@ -1,1 +1,9 @@
-<svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M8.5 22.5C10 13 17 9.5 24 9.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M19.5 5.5l4.5 4-4.5 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="23.5" r="3.25" fill="none" class="mark-start" stroke-width="2.5"/></svg>
+{{- /* The logo: the three classic tanks' icons from the game (built by tools/make_logo.py).
+     size = displayed size in CSS px; 2x and 3x versions are offered for sharp screens.
+     Decorative: it always sits next to the words "Quick Dungeon". */ -}}
+{{- $logo := resources.Get "logo/logo.png" -}}
+{{- $s := .size | default 32 -}}
+{{- $x1 := $logo.Resize (printf "%dx webp q85" $s) -}}
+{{- $x2 := $logo.Resize (printf "%dx webp q85" (mul $s 2)) -}}
+{{- $x3 := $logo.Resize (printf "%dx webp q85" (mul $s 3)) -}}
+<img class="mark" src="{{ $x2.RelPermalink }}" srcset="{{ $x1.RelPermalink }} 1x, {{ $x2.RelPermalink }} 2x, {{ $x3.RelPermalink }} 3x" width="{{ $s }}" height="{{ $s }}" alt="" decoding="async">

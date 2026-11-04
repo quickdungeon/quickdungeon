@@ -56,14 +56,15 @@ site/                      Hugo project (Hugo 0.147, built inside Docker; no loc
   assets/css/main.css      all styles
   assets/js/site.js        theme toggle, search, route-map stepper, copy-to-chat buttons
   assets/js/theme.js       applies a saved light theme before first paint
-  static/                  font (Archivo, OFL licence), favicon
+  assets/logo/logo.png     the logo (built by tools/make_logo.py)
+  static/                  font (Archivo, OFL licence), favicon.ico, apple-touch-icon.png
 Dockerfile, Caddyfile      build with Hugo, serve with Caddy
 compose.yaml               local + dev services
 compose.https.yaml         override for a public HTTPS server
 classic/                   the raw recovered archive (original HTML + images); not deployed
 artist-maps/               unmodified originals of third-party maps (Santiago Reyes); not deployed
 game-maps/                 maps extracted from the WoW Forever client (entrance areas, new-dungeon overviews)
-tools/                     archive downloader, archive-to-Hugo converter, game-file extraction tools
+tools/                     archive downloader, archive-to-Hugo converter, game-file extraction tools, logo builder
 REVIEW.md                  guides changed to match WoW Forever that still need checking
 ```
 
@@ -157,6 +158,18 @@ cropping). The two Dalaran maps had a title banner across the bottom, which is c
 for the site; his watermark inside the map is untouched. The unmodified originals are in
 `artist-maps/`. The "New in WoW Forever" intro line credits him with a
 link, set by `credit:` in `site/data/expansions/forever.yaml`.
+
+## Logo
+
+The logo is the three classic tanks' signature abilities, taken from the WoW Forever client's
+icons: Defensive Stance (warrior, in front), Righteous Fury (paladin) and Bear Form (druid),
+each in a gold-rimmed round frame like the game's role icons. `tools/make_logo.py` extracts
+the icons and builds `site/assets/logo/logo.png` (Hugo resizes it for the header and home
+page), `site/static/favicon.ico` and `site/static/apple-touch-icon.png`:
+
+`python3 -I tools/make_logo.py "/path/to/World of Warcraft" wowf site`
+
+It needs Pillow, which reads the game's BLP textures.
 
 ## Maps from the game client
 

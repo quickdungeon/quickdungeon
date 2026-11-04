@@ -26,7 +26,8 @@
 <meta property="og:image:width" content="{{ .Width }}">
 <meta property="og:image:height" content="{{ .Height }}">
 {{- end }}{{ end }}
-<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 <link rel="preload" href="{{ "fonts/archivo-latin-wdth-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 {{- /* Blocking on purpose (and before the stylesheet, so it doesn't wait on it): applies a
      saved light theme before first paint. External because the CSP forbids inline scripts. */}}

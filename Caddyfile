@@ -26,7 +26,7 @@
 	# Fingerprinted CSS/JS and Hugo-processed images never change: cache for a year.
 	@immutable path_regexp (\.[0-9a-f]{64}\.(css|js)|_hu_?[0-9a-f]+.*\.webp)$
 	header @immutable Cache-Control "public, max-age=31536000, immutable"
-	@assets path *.jpg *.jpeg *.png *.webp *.svg *.woff2
+	@assets path *.jpg *.jpeg *.png *.webp *.svg *.ico *.woff2
 	header @assets ?Cache-Control "public, max-age=604800"
 	@pages path / *.html */
 	header @pages Cache-Control "public, max-age=0, must-revalidate"

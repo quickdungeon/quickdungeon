@@ -106,8 +106,7 @@ kbd { font: inherit; }
   color: var(--gold); text-decoration: none;
   font-weight: 800; font-stretch: var(--wide); font-size: 1.125rem; letter-spacing: -0.01em;
 }
-.mark { width: 1.6em; height: 1.6em; flex: none; }
-.mark-start { stroke: var(--cyan); }
+.mark { width: 1.7em; height: 1.7em; flex: none; }
 .site-nav-link { color: var(--muted); font-weight: 500; }
 .site-nav-link:hover { color: var(--text); }
 .site-header-end { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
@@ -147,7 +146,7 @@ kbd { font: inherit; }
   font-size: clamp(3rem, 9vw, 4.5rem);
   letter-spacing: -0.025em; line-height: 0.95;
 }
-.wordmark .mark { width: 0.9em; height: 0.9em; }
+.wordmark .mark { width: 1em; height: 1em; }
 .lede { margin-top: 1.25rem; max-width: 38em; font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.3125rem); line-height: 1.5; }
 
 .search { position: relative; margin-top: 2rem; max-width: 36rem; }
