@@ -13,6 +13,9 @@ timeZone = "UTC"
   description = "Tank routes and quick boss tactics for World of Warcraft dungeons."
   # Home page section order (files in data/expansions/). Newest first, like the original site.
   expansionOrder = ["forever", "classic"]
+  # The GitHub repository: linked from the footer, and the header's "Report an issue" button
+  # opens a new issue there (prefilled with the guide's name and address on guide pages).
+  repoURL = "https://github.com/quickdungeon/quickdungeon"
   # Cloudflare Web Analytics site token: the "token" in the JS snippet under Cloudflare dashboard >
   # Web Analytics > Manage site. Empty means no analytics. Only production builds include the
   # script (the Hugo dev server never does). The token is public: it ends up in every page.

@@ -1,5 +1,8 @@
 <footer class="site-footer wrap">
   <p>Credits to the original Quick Dungeon creator and site.</p>
   <p>Boss portraits from <a href="https://www.wowhead.com/forever/dungeon-journal">Wowhead’s WoW Forever Dungeon Journal</a>.</p>
+  {{- with site.Params.repoURL }}
+  <p>Quick Dungeon is open source: <a href="{{ . }}">see the code and contribute on GitHub</a>.</p>
+  {{- end }}
   <p class="legal">World of Warcraft and Blizzard Entertainment are trademarks of Blizzard Entertainment, Inc. Quick Dungeon is a fan site and isn’t affiliated with or endorsed by Blizzard.</p>
 </footer>

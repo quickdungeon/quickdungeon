@@ -6,6 +6,13 @@
     {{- if not .IsHome }}
     <a class="site-nav-link" href="{{ "" | relURL }}">All dungeons</a>
     {{- end }}
+    {{- with site.Params.repoURL }}
+    {{- $prefill := dict }}
+    {{- if $.IsPage }}{{ $prefill = dict "title" (printf "%s: " $.Title) "body" (printf "Page: %s\n\n" $.Permalink) }}{{ end }}
+    {{- $href := printf "%s/issues/new" . }}
+    {{- with $prefill }}{{ $href = printf "%s?%s" $href (querify .) }}{{ end }}
+    <a class="report-issue" href="{{ $href | safeURL }}" aria-label="Report an issue">Report<span class="report-more"> an issue</span></a>
+    {{- end }}
     {{ partial "theme-toggle.html" . }}
   </div>
 </header>
