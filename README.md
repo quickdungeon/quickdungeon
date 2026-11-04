@@ -1,13 +1,17 @@
 # Quick Dungeon
 
-A rebuilt version of quickdungeon.com, the World of Warcraft dungeon quick-guide site
-(WordPress, ~2014–2024). Each guide gives the tank route as a series of annotated maps, a
+Quick Dungeon is an open-source reimplementation of quickdungeon.com, the World of Warcraft
+dungeon quick-guide site that ran on WordPress from about 2014 to 2024. It's live at
+https://quickdungeon.app. Each guide gives the tank route as a series of annotated maps, a
 one-line tactic for every boss (ready to paste into instance chat with `/i`), and directions
 to the entrance.
 
-The guides were recovered from the Internet Archive in November 2026. The guide text and
-annotated route maps are the original author's work, and the maps and boss portraits are
-built on Blizzard's game art. Get the author's permission before hosting this publicly.
+The core guides, the original site's 26 Classic dungeon guides, were recovered from the
+Internet Archive in November 2026, from snapshots taken between July and November 2024.
+They've since been updated to match WoW Forever (`REVIEW.md` lists what changed and what
+still needs checking), and the site adds pages for WoW Forever's four new dungeons. The guide
+text and annotated route maps are the original Quick Dungeon author's work. The game maps,
+icons and boss portraits are built on Blizzard's game art.
 
 ## Run it
 
@@ -17,15 +21,10 @@ You need Docker with Compose.
 |---|---|---|
 | Local copy of the site | `docker compose up -d --build` | http://localhost:8080 |
 | Live editing (reloads as you edit `site/`) | `docker compose --profile dev up dev` | http://localhost:1313 |
-| Public server with automatic HTTPS | `SITE_ADDRESS=quickdungeon.app docker compose -f compose.yaml -f compose.https.yaml up -d --build` | https://quickdungeon.app |
 
 Options (environment variables for `docker compose`):
 
 - `PORT`: host port for the local site (default `8080`).
-- `SITE_ADDRESS`: what Caddy serves. The default `:8080` serves plain HTTP. A domain name
-  (or several, comma-separated) switches on automatic HTTPS from Let's Encrypt on ports 80
-  and 443. For that, DNS must already point at the server. `compose.https.yaml` publishes
-  80/443 and keeps certificates in a volume.
 - `BASE_URL`: build-time base URL for canonical links, Open Graph and the sitemap
   (default `https://quickdungeon.app/`, set in `site/hugo.toml`). All links inside the site
   are relative, so the site works on any host either way.
@@ -42,22 +41,18 @@ Other ways to host it:
   Netlify reads the security and cache headers from `_headers`. Hosts that don't read
   `_headers` won't send those headers, but everything else works.
 
-The image is the official Caddy image plus about 25 MB of site, and runs Caddy as an
-unprivileged user (uid 10001). It sets a strict
-Content-Security-Policy (the font is self-hosted, and the only outside requests are Cloudflare
-Web Analytics, once it's switched on), uses
-zstd/gzip compression, and caches fingerprinted assets for a year.
+The image is the official Caddy image plus about 43 MB of site, and runs Caddy as an
+unprivileged user (uid 10001). It sets a strict Content-Security-Policy (the font is
+self-hosted, and the only outside requests are Cloudflare Web Analytics), uses zstd/gzip
+compression, and caches fingerprinted assets for a year.
 
 ## Host it on Cloudflare (free)
 
 The site is only static files, so it runs on Cloudflare's free plan as a Worker with static
 assets and no Worker code. Static file requests are free and unlimited, and the site
 (about 770 files and 43 MB, largest file 1.8 MB) is far inside the free plan's limits of
-20,000 files and 25 MiB per file. It's served at https://quickdungeon.app.
-
-Every push to `mainline` that changes the site deploys it (see
-[Deploy from GitHub](#deploy-from-github)). To build, preview or deploy it yourself, you
-need Docker and Node:
+20,000 files and 25 MiB per file. To build, preview or deploy it yourself, you need Docker
+and Node:
 
 | What | Command |
 |---|---|
@@ -68,71 +63,16 @@ need Docker and Node:
 
 The script builds the site with the same Docker Hugo step as the image, so warnings still
 fail the build (the script prints the build log when that happens). It exports the site to
-`dist/` and runs `wrangler deploy` with `wrangler.jsonc`. The first deploy creates the
-`quickdungeon` Worker and puts it on quickdungeon.app, which is public right away, so get the
-permissions mentioned at the top of this file first. Later deploys upload only the files
-that changed.
+`dist/` and runs `wrangler deploy` with `wrangler.jsonc`. Deploys upload only the files that
+changed.
 
 Caddy isn't used on Cloudflare. Instead:
 
 - `site/static/_headers` sets the same security headers (Content-Security-Policy and the
   rest) and cache rules as the Caddyfile. When you change one, change the other to match.
-- `wrangler.jsonc` serves `404.html` for unknown URLs and redirects `/deadmines` to
-  `/deadmines/`.
+- `wrangler.jsonc` serves `404.html` for unknown URLs, redirects `/deadmines` to
+  `/deadmines/`, and puts the site on quickdungeon.app.
 - Cloudflare compresses responses itself.
-
-### The domain
-
-quickdungeon.app's DNS is on Cloudflare, and `routes` in `wrangler.jsonc` puts the Worker
-on it as a Custom Domain. The first deploy adds the DNS record and the HTTPS certificate.
-Don't add an A or CNAME record for quickdungeon.app yourself, because an existing CNAME
-blocks the Custom Domain. The `quickdungeon.<you>.workers.dev` address is turned off
-(`"workers_dev": false`).
-
-To move the site to another domain (quickdungeon.com, if it ever comes back), its DNS must
-be on Cloudflare too. Then change the `routes` pattern in `wrangler.jsonc` and `baseURL` in
-`site/hugo.toml`, which the canonical links and sitemap use. Optional: to send
-www.quickdungeon.app to quickdungeon.app, add a Redirect Rule in the dashboard (it has a
-"redirect from WWW to root" template). It needs a proxied DNS record for `www`.
-
-### Deploy from GitHub
-
-`.github/workflows/deploy.yml` runs `tools/deploy-cloudflare.sh` on every push to `mainline`
-that changes the site, its build or its Cloudflare config. To deploy without a change, go to
-the Actions tab, open "Deploy" and click "Run workflow". It needs two repository secrets,
-set under Settings > Secrets and variables > Actions, or with `gh secret set <name>`:
-
-- `CLOUDFLARE_API_TOKEN`: in the Cloudflare dashboard, go to My Profile > API Tokens >
-  Create Token and use the "Edit Cloudflare Workers" template. Set Account Resources to
-  your account and Zone Resources to quickdungeon.app. If a deploy then fails with an
-  authentication error while adding the domain, edit the token and add Zone > DNS > Edit
-  for quickdungeon.app.
-- `CLOUDFLARE_ACCOUNT_ID`: shown on the dashboard's account home page, or by
-  `npx wrangler@4 whoami`.
-
-Add the secrets before you push the workflow. The push itself triggers a deploy. Each run
-shows up as a deployment to the `production` environment, linked to the live site. Deploys
-run one at a time, in push order.
-
-### Web Analytics
-
-The pages carry Cloudflare Web Analytics (visits, top pages, referrers, page load times) once
-they have a site token:
-
-1. In the Cloudflare dashboard, go to Web Analytics and add a site for quickdungeon.app.
-   Choose the JS snippet option rather than automatic setup. Once the domain is on
-   Cloudflare, automatic setup injects a second copy of the script and counts every visit
-   twice.
-2. Copy the token from the snippet (the value after `"token":`) into
-   `cloudflareAnalyticsToken` in `site/hugo.toml`, then deploy.
-
-The script goes in production builds only, so it's in both the Cloudflare deploy and the
-Docker image, but never on the Hugo dev server. The old-URL redirect pages don't carry it.
-Ad and tracker blockers, including network-wide DNS blockers, block it, so the numbers
-undercount. `_headers` and the Caddyfile allow its script (from
-`static.cloudflareinsights.com`) and its reports (to `cloudflareinsights.com`) in the
-Content-Security-Policy, and nothing else from outside the site. Other Cloudflare features
-that add scripts to pages, such as Rocket Loader, won't work with that policy. Leave them off.
 
 ## Layout
 
@@ -153,13 +93,13 @@ Dockerfile, Caddyfile      build with Hugo, serve with Caddy
 wrangler.jsonc             Cloudflare config (used by tools/deploy-cloudflare.sh)
 .github/workflows/         deploy.yml: deploys to Cloudflare on every push to mainline
 compose.yaml               local + dev services
-compose.https.yaml         override for a public HTTPS server
 classic/                   the raw recovered archive (original HTML + images); not deployed
 artist-maps/               unmodified originals of third-party maps (Santiago Reyes); not deployed
 game-maps/                 maps extracted from the WoW Forever client (entrance areas, new-dungeon overviews)
 tools/                     archive downloader, archive-to-Hugo converter, game-file extraction tools, logo builder,
                            Cloudflare deploy script
 REVIEW.md                  guides changed to match WoW Forever that still need checking
+LICENSE                    MIT licence for the code (see License below)
 ```
 
 Guide URLs match the old WordPress site (`/shadowfang-keep/`), so old links and search
@@ -188,12 +128,15 @@ route:                # one entry per route map, shown as steps
       - text: "Optional instructions for this map"
       - image: "images/shadowfang-keep-dungeon-map-1.jpg"
 review: "..."         # optional: a notice under the title (see REVIEW.md)
+source:               # where the guide came from in the archive (a record; not shown on the page)
+  url: "https://web.archive.org/web/20241111045715/https://quickdungeon.com/shadowfang-keep/"
+  captured: "2024-11-11"
 bosses:
   - number: 2         # matches the marker drawn on the route map; leave out if it isn't marked
     name: "Baron Silverlaine"
     part: "Upper City"  # optional: which part of a merged dungeon (Maraudon, Blackrock Depths)
     tag: "rare"       # optional: optional, rare, event, heroic, or any short label ("Warlock quest")
-    image: "images/baron-silverlaine-model.jpg"
+    image: "images/baron-silverlaine-wowhead.png"
     tactics:
       - "Curses his targets with Veil of Shadow..."   # shown and copied as "/i ..."
 ```
@@ -234,13 +177,12 @@ Most boss portraits come from [Wowhead's WoW Forever Dungeon Journal](https://ww
 (saved as `images/<boss>-wowhead.png` in each guide, resized to 200×200). Wowhead hosts them as
 guide images, and one (Shade of Eranikus) is Blizzard's own render from
 render.worldofwarcraft.com. The site footer credits Wowhead on every page
-(`layouts/_partials/site-footer.html`). As with the guide text, get permission before hosting
-these publicly.
+(`layouts/_partials/site-footer.html`).
 
 ## Third-party maps (credit required)
 
 All four new WoW Forever dungeon pages (City of Dalaran with its city and sewers maps, Ruins
-of Lordaeron, The Hall of Thanes, Excavation Site: Wetlands) show maps by **Santiago Reyes**
+of Lordaeron, Hall of Thanes, Excavation Site: Wetlands) show maps by **Santiago Reyes**
 ([Atlas de Azeroth: Forever](https://asguevara433.wixsite.com/srmaps)). His project post gives
 everyone permission to use the maps for free, on these conditions: don't alter the watermark
 or credits, and don't use the maps to make money. He also asks people to write to him so he
@@ -271,8 +213,9 @@ It needs Pillow, which reads the game's BLP textures.
 `site/data/entrance_maps.yaml` lists in-game maps that appear under a guide's entrance
 directions (Blackrock Mountain, Gnomeregan, Uldaman). The images are in
 `site/assets/game-maps/`. They're kept out of `content/` so that rerunning the converter
-doesn't delete them. `game-maps/README.md` describes every extracted map, including top-down
-overviews and boss lists for the five new WoW Forever dungeons, which don't have guides yet.
+doesn't delete them. `game-maps/README.md` describes every extracted map, including
+top-down terrain overviews of the new WoW Forever dungeons. The site uses Santiago Reyes's
+maps for those, so the overviews are kept for reference only.
 
 The extraction tools only read the game files:
 
@@ -285,31 +228,14 @@ The extraction tools only read the game files:
 For example (WoW Forever is product `wowf`):
 `python3 -I tools/casc_read.py "/path/to/World of Warcraft" wowf out 603971`
 
-## Design notes
+## License
 
-- Colour means something, and it's borrowed from the game's UI. Gold is for names (dungeons,
-  bosses), like quest and NPC titles. Orange is for text you paste into instance chat (`/i`
-  chat is orange in-game). Cyan boss numbers match the cyan annotations on the route maps.
-  The dark theme's background is the misty night teal of the WoW Forever key art (with a
-  soft glow at the top of the page), body text is the cream of its lettering, and the tan
-  rules come from the bronze ring around its emblem, so the parchment maps stand out. The
-  light theme is classic quest-log parchment.
-- One typeface, Archivo, at three widths: expanded for names, normal for directions,
-  condensed for chat lines.
-- On wide screens the route map stays pinned while the boss list scrolls, so you can see the
-  map and the tactics together on a second monitor. On phones they stack.
-- Everything works without JavaScript (all maps are shown in order, and the tactics text can
-  be selected). With JS you get search, the map stepper (arrow keys, `#map-3` deep links) and
-  copy buttons.
-- Dark is the default theme for everyone. The sun/moon button in the top-right corner
-  switches to light and remembers it (`localStorage`). `assets/js/theme.js` is a tiny
-  blocking script in `<head>` that applies a saved light choice before the first paint.
+The code (templates, styles, scripts, build and deploy setup, and the tools) is under the
+MIT License; see `LICENSE`. That doesn't cover the content, which stays with its owners:
 
-## Archive notes
-
-- **Blackrock Depths: Upper City**: the two route maps uploaded in Feb 2024 were never
-  archived. The guide shows the original 2014 route maps instead, with a note.
-- **Stratholme: Main Gate**: Balnazzar's portrait was broken on the 2024 site. The archive
-  copy repairs the tag.
-- Raw archived pages are in `classic/<slug>/original.html`, and `classic/manifest.json`
-  records the source URL for each one.
+- the guide text and annotated route maps: the original Quick Dungeon author
+- game art, maps, icons and boss portraits: Blizzard Entertainment (the portraits are via
+  Wowhead's WoW Forever Dungeon Journal)
+- the WoW Forever dungeon maps: Santiago Reyes, on the terms in
+  [Third-party maps](#third-party-maps-credit-required)
+- the Archivo font: the SIL Open Font License (`site/static/fonts/Archivo-OFL.txt`)

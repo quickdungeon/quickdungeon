@@ -1,11 +1,6 @@
-# Quick Dungeon static site.
-#
-# SITE_ADDRESS decides how Caddy serves the site:
-#   :8080 (default)    plain HTTP on port 8080: local use, or behind a reverse proxy or a
-#                      platform that handles TLS for you
-#   quickdungeon.app   automatic HTTPS via Let's Encrypt on ports 80 and 443. DNS must point
-#                      at this server and /data must be persisted (see compose.https.yaml).
-#                      Several names are allowed: "quickdungeon.app, www.quickdungeon.app"
+# Quick Dungeon static site: plain HTTP on port 8080, for local use or behind a reverse proxy
+# or platform that handles TLS. (https://quickdungeon.app itself is served by Cloudflare,
+# which reads the same headers from site/static/_headers.)
 {
 	admin off
 }
@@ -47,7 +42,7 @@
 	}
 }
 
-{$SITE_ADDRESS::8080} {
+:8080 {
 	import static_site
 }
 

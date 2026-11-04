@@ -22,14 +22,12 @@ COPY --from=build /src/public /
 
 # --- Serve it
 FROM caddy:${CADDY_VERSION}-alpine
-# The caddy binary carries cap_net_bind_service, so it can bind 80/443 without root.
 RUN addgroup -S -g 10001 web \
  && adduser -S -D -H -u 10001 -G web web \
  && chown -R web:web /data /config
 COPY Caddyfile /etc/caddy/Caddyfile
 COPY --from=build /src/public /srv
-ENV SITE_ADDRESS=:8080
 USER web
-EXPOSE 8080 80 443
+EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s \
   CMD wget -qO /dev/null http://127.0.0.1:8081/healthz || exit 1
