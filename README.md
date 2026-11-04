@@ -233,8 +233,9 @@ the same way a browser does.
 Most boss portraits come from [Wowhead's WoW Forever Dungeon Journal](https://www.wowhead.com/forever/dungeon-journal)
 (saved as `images/<boss>-wowhead.png` in each guide, resized to 200×200). Wowhead hosts them as
 guide images, and one (Shade of Eranikus) is Blizzard's own render from
-render.worldofwarcraft.com. A guide that uses any of them shows a credit line under the boss list
-automatically. As with the guide text, get permission before hosting these publicly.
+render.worldofwarcraft.com. The site footer credits Wowhead on every page
+(`layouts/_partials/site-footer.html`). As with the guide text, get permission before hosting
+these publicly.
 
 ## Third-party maps (credit required)
 

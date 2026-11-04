@@ -16,7 +16,7 @@
     <figure>
       {{- partial "img.html" (dict "page" $.page "src" . "alt" $alt "link" true "loading" ($.loading | default "lazy")) -}}
       {{- with $b.credit }}
-      <figcaption class="map-credit">Map by <a href="{{ .url }}">{{ .name }}</a>{{ with .project }}, from {{ . }}{{ end }}. Used with the artist’s permission.</figcaption>
+      <figcaption class="map-credit">Map by <a href="{{ .url }}">{{ .name }}</a>.</figcaption>
       {{- end }}
     </figure>
   {{- end -}}

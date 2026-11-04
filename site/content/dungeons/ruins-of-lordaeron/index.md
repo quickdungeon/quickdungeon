@@ -3,6 +3,8 @@ title: "Ruins of Lordaeron"
 url: "/ruins-of-lordaeron/"
 expansions:
   - "forever"
+zone: "Tirisfal Glades"
+continent: "Eastern Kingdoms"
 status: "overview"
 summary: "New in WoW Forever. The entrance location isn’t in the game data yet."
 description: "Map and boss list for Ruins of Lordaeron, a new 5-player dungeon in WoW Forever."

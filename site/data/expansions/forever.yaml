@@ -1,11 +1,7 @@
 id: "forever"
 name: "New in WoW Forever"
-blurb: "Dungeons added in WoW Forever. So far these pages have a map and the boss list; routes and tactics haven’t been written yet."
 guides:
   - "city-of-dalaran"
   - "ruins-of-lordaeron"
   - "the-hall-of-thanes"
   - "excavation-site-wetlands"
-credit:
-  name: "Santiago Reyes"
-  url: "https://asguevara433.wixsite.com/srmaps"

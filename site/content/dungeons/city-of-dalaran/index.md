@@ -3,6 +3,8 @@ title: "City of Dalaran"
 url: "/city-of-dalaran/"
 expansions:
   - "forever"
+zone: "Alterac Mountains"
+continent: "Eastern Kingdoms"
 status: "overview"
 summary: "New in WoW Forever. The entrance location isn’t in the game data yet."
 description: "Map and boss list for City of Dalaran, a new 5-player dungeon in WoW Forever."

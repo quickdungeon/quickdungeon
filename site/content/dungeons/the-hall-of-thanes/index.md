@@ -3,14 +3,16 @@ title: "Hall of Thanes"
 url: "/the-hall-of-thanes/"
 expansions:
   - "forever"
+zone: "Ironforge"
+continent: "Eastern Kingdoms"
 status: "overview"
-summary: "New in WoW Forever. The entrance location isn’t in the game data yet."
+summary: "New in WoW Forever."
 description: "Map and boss list for Hall of Thanes, a new 5-player dungeon in WoW Forever."
 thumbnail: "images/the-hall-of-thanes-map-santiago-reyes.jpg"
 route:
   - label: "Map"
     blocks:
-      - callout: "The tank route hasn’t been drawn on this map yet."
+      - callout: ""
       - image: "images/the-hall-of-thanes-map-santiago-reyes.jpg"
         alt: "Map of Hall of Thanes by Santiago Reyes"
         credit:
@@ -18,11 +20,11 @@ route:
           url: "https://asguevara433.wixsite.com/srmaps"
           project: "Atlas de Azeroth: Forever"
           source: "https://www.wowhead.com/forever/guide/hall-of-thanes-dungeon-overview-location-rewards (Wowhead screenshot 1303242)"
-bosses_note: "Listed in the order the game’s encounter table gives them, which may not be the order you meet them. Tactics haven’t been written yet."
+bosses_note: ""
 bosses:
   - name: "Faldrim Anvilmar"
     image: "images/faldrim-anvilmar-wowhead.png"
-    tactics: []
+    tactics: ["Reduce his health to zero before he kills you all."]
   - name: "Infurnus"
     tactics: []
   - name: "Plunder"

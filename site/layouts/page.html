@@ -89,13 +89,6 @@
     {{- range $i, $s := . }}{{ if $i }};{{ end }} <a href="{{ $s.url }}">{{ $s.title }}</a>{{ with $s.captured }} (archived {{ time.Format "2 January 2006" . }}){{ end }}{{ end }}.</p>
   </footer>
   {{- end }}
-  {{- $journal := false }}
-  {{- range .Params.bosses }}{{ if strings.Contains (.image | default "") "-wowhead." }}{{ $journal = true }}{{ end }}{{ end }}
-  {{- if $journal }}
-  <footer class="guide-source">
-    <p>Boss portraits from <a href="https://www.wowhead.com/forever/dungeon-journal">Wowhead’s WoW Forever Dungeon Journal</a>.</p>
-  </footer>
-  {{- end }}
   {{- with .Params.bosses_from }}
   <footer class="guide-source">
     <p>The boss list comes from {{ . }}.</p>
