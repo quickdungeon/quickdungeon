@@ -2,3 +2,7 @@
 site/public/
 site/resources/
 site/.hugo_build.lock
+
+# Cloudflare: the exported site and wrangler dev state
+dist/
+.wrangler/

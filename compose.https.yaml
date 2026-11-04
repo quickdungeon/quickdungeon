@@ -1,10 +1,10 @@
 # Public server with automatic HTTPS (Let's Encrypt). Point DNS at the server first, then:
-#   SITE_ADDRESS=quickdungeon.com docker compose -f compose.yaml -f compose.https.yaml up -d --build
+#   SITE_ADDRESS=quickdungeon.app docker compose -f compose.yaml -f compose.https.yaml up -d --build
 # Certificates are kept in the caddy-data volume so restarts don't re-issue them.
 services:
   web:
     environment:
-      SITE_ADDRESS: ${SITE_ADDRESS:?set SITE_ADDRESS to your domain, e.g. quickdungeon.com}
+      SITE_ADDRESS: ${SITE_ADDRESS:?set SITE_ADDRESS to your domain, e.g. quickdungeon.app}
     ports: !override
       - "80:80"
       - "443:443"

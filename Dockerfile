@@ -15,6 +15,11 @@ COPY site/ ./
 ARG BASE_URL=""
 RUN hugo --gc --minify --panicOnWarning ${BASE_URL:+--baseURL "$BASE_URL"}
 
+# --- Just the built files, for static hosts (Cloudflare):
+#     docker build --target public --output type=local,dest=dist .
+FROM scratch AS public
+COPY --from=build /src/public /
+
 # --- Serve it
 FROM caddy:${CADDY_VERSION}-alpine
 # The caddy binary carries cap_net_bind_service, so it can bind 80/443 without root.

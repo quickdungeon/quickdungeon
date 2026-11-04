@@ -2,7 +2,7 @@
 # baseURL is only used for canonical links, Open Graph and the sitemap; every in-site link is
 # relative, so the built site works on any host. Override at build time with --baseURL
 # (the Docker build exposes this as the BASE_URL build arg).
-baseURL = "https://quickdungeon.com/"
+baseURL = "https://quickdungeon.app/"
 languageCode = "en-us"
 title = "Quick Dungeon"
 disableKinds = ["taxonomy", "term", "rss"]
@@ -13,6 +13,10 @@ timeZone = "UTC"
   description = "Tank routes and quick boss tactics for World of Warcraft dungeons."
   # Home page section order (files in data/expansions/). Newest first, like the original site.
   expansionOrder = ["forever", "classic"]
+  # Cloudflare Web Analytics site token: the "token" in the JS snippet under Cloudflare dashboard >
+  # Web Analytics > Manage site. Empty means no analytics. Only production builds include the
+  # script (the Hugo dev server never does). The token is public: it ends up in every page.
+  cloudflareAnalyticsToken = ""
 
 [imaging]
   quality = 80

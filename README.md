@@ -17,7 +17,7 @@ You need Docker with Compose.
 |---|---|---|
 | Local copy of the site | `docker compose up -d --build` | http://localhost:8080 |
 | Live editing (reloads as you edit `site/`) | `docker compose --profile dev up dev` | http://localhost:1313 |
-| Public server with automatic HTTPS | `SITE_ADDRESS=quickdungeon.com docker compose -f compose.yaml -f compose.https.yaml up -d --build` | https://quickdungeon.com |
+| Public server with automatic HTTPS | `SITE_ADDRESS=quickdungeon.app docker compose -f compose.yaml -f compose.https.yaml up -d --build` | https://quickdungeon.app |
 
 Options (environment variables for `docker compose`):
 
@@ -27,7 +27,7 @@ Options (environment variables for `docker compose`):
   and 443. For that, DNS must already point at the server. `compose.https.yaml` publishes
   80/443 and keeps certificates in a volume.
 - `BASE_URL`: build-time base URL for canonical links, Open Graph and the sitemap
-  (default `https://quickdungeon.com/`, set in `site/hugo.toml`). All links inside the site
+  (default `https://quickdungeon.app/`, set in `site/hugo.toml`). All links inside the site
   are relative, so the site works on any host either way.
 
 Other ways to host it:
@@ -35,14 +35,104 @@ Other ways to host it:
 - **Behind an existing reverse proxy or a platform that handles TLS** (Traefik, nginx,
   Cloudflare Tunnel, Fly.io, Render, Cloud Run, ...): run the image as-is. It listens on
   8080 over plain HTTP. Health check: `GET :8081/healthz` inside the container.
-- **Static hosting only** (GitHub Pages, Cloudflare Pages, Netlify, S3): build with
-  `docker build --target build -t qd-build . && docker run --rm qd-build tar -C /src/public -c . | tar -x -C ./public`,
-  then upload `public/`. You'll lose Caddy's security and cache headers, but everything else works.
+- **Cloudflare, free** (how https://quickdungeon.app is hosted): see
+  [Host it on Cloudflare](#host-it-on-cloudflare-free) below.
+- **Other static hosting** (GitHub Pages, Netlify, S3, ...): export the built site with
+  `docker build --target public --output type=local,dest=dist .` and upload `dist/`.
+  Netlify reads the security and cache headers from `_headers`. Hosts that don't read
+  `_headers` won't send those headers, but everything else works.
 
 The image is the official Caddy image plus about 25 MB of site, and runs Caddy as an
 unprivileged user (uid 10001). It sets a strict
-Content-Security-Policy (no third-party requests at all: the font is self-hosted), uses
+Content-Security-Policy (the font is self-hosted, and the only outside requests are Cloudflare
+Web Analytics, once it's switched on), uses
 zstd/gzip compression, and caches fingerprinted assets for a year.
+
+## Host it on Cloudflare (free)
+
+The site is only static files, so it runs on Cloudflare's free plan as a Worker with static
+assets and no Worker code. Static file requests are free and unlimited, and the site
+(about 770 files and 43 MB, largest file 1.8 MB) is far inside the free plan's limits of
+20,000 files and 25 MiB per file. It's served at https://quickdungeon.app.
+
+Every push to `mainline` that changes the site deploys it (see
+[Deploy from GitHub](#deploy-from-github)). To build, preview or deploy it yourself, you
+need Docker and Node:
+
+| What | Command |
+|---|---|
+| Sign in to Cloudflare (once) | `npx wrangler@4 login` |
+| Preview it the way Cloudflare serves it | `tools/deploy-cloudflare.sh --preview`, then open http://localhost:8787 |
+| Check a deploy without uploading anything | `tools/deploy-cloudflare.sh --dry-run` |
+| Deploy | `tools/deploy-cloudflare.sh` |
+
+The script builds the site with the same Docker Hugo step as the image, so warnings still
+fail the build (the script prints the build log when that happens). It exports the site to
+`dist/` and runs `wrangler deploy` with `wrangler.jsonc`. The first deploy creates the
+`quickdungeon` Worker and puts it on quickdungeon.app, which is public right away, so get the
+permissions mentioned at the top of this file first. Later deploys upload only the files
+that changed.
+
+Caddy isn't used on Cloudflare. Instead:
+
+- `site/static/_headers` sets the same security headers (Content-Security-Policy and the
+  rest) and cache rules as the Caddyfile. When you change one, change the other to match.
+- `wrangler.jsonc` serves `404.html` for unknown URLs and redirects `/deadmines` to
+  `/deadmines/`.
+- Cloudflare compresses responses itself.
+
+### The domain
+
+quickdungeon.app's DNS is on Cloudflare, and `routes` in `wrangler.jsonc` puts the Worker
+on it as a Custom Domain. The first deploy adds the DNS record and the HTTPS certificate.
+Don't add an A or CNAME record for quickdungeon.app yourself, because an existing CNAME
+blocks the Custom Domain. The `quickdungeon.<you>.workers.dev` address is turned off
+(`"workers_dev": false`).
+
+To move the site to another domain (quickdungeon.com, if it ever comes back), its DNS must
+be on Cloudflare too. Then change the `routes` pattern in `wrangler.jsonc` and `baseURL` in
+`site/hugo.toml`, which the canonical links and sitemap use. Optional: to send
+www.quickdungeon.app to quickdungeon.app, add a Redirect Rule in the dashboard (it has a
+"redirect from WWW to root" template). It needs a proxied DNS record for `www`.
+
+### Deploy from GitHub
+
+`.github/workflows/deploy.yml` runs `tools/deploy-cloudflare.sh` on every push to `mainline`
+that changes the site, its build or its Cloudflare config. To deploy without a change, go to
+the Actions tab, open "Deploy" and click "Run workflow". It needs two repository secrets,
+set under Settings > Secrets and variables > Actions, or with `gh secret set <name>`:
+
+- `CLOUDFLARE_API_TOKEN`: in the Cloudflare dashboard, go to My Profile > API Tokens >
+  Create Token and use the "Edit Cloudflare Workers" template. Set Account Resources to
+  your account and Zone Resources to quickdungeon.app. If a deploy then fails with an
+  authentication error while adding the domain, edit the token and add Zone > DNS > Edit
+  for quickdungeon.app.
+- `CLOUDFLARE_ACCOUNT_ID`: shown on the dashboard's account home page, or by
+  `npx wrangler@4 whoami`.
+
+Add the secrets before you push the workflow. The push itself triggers a deploy. Each run
+shows up as a deployment to the `production` environment, linked to the live site. Deploys
+run one at a time, in push order.
+
+### Web Analytics
+
+The pages carry Cloudflare Web Analytics (visits, top pages, referrers, page load times) once
+they have a site token:
+
+1. In the Cloudflare dashboard, go to Web Analytics and add a site for quickdungeon.app.
+   Choose the JS snippet option rather than automatic setup. Once the domain is on
+   Cloudflare, automatic setup injects a second copy of the script and counts every visit
+   twice.
+2. Copy the token from the snippet (the value after `"token":`) into
+   `cloudflareAnalyticsToken` in `site/hugo.toml`, then deploy.
+
+The script goes in production builds only, so it's in both the Cloudflare deploy and the
+Docker image, but never on the Hugo dev server. The old-URL redirect pages don't carry it.
+Ad and tracker blockers, including network-wide DNS blockers, block it, so the numbers
+undercount. `_headers` and the Caddyfile allow its script (from
+`static.cloudflareinsights.com`) and its reports (to `cloudflareinsights.com`) in the
+Content-Security-Policy, and nothing else from outside the site. Other Cloudflare features
+that add scripts to pages, such as Rocket Loader, won't work with that policy. Leave them off.
 
 ## Layout
 
@@ -52,19 +142,23 @@ site/                      Hugo project (Hugo 0.147, built inside Docker; no loc
   content/dungeons/<slug>/ one page bundle per guide: index.md (structured YAML) + images/
   data/expansions/         which guides each expansion section lists (the home page sorts them by level)
   data/levels.yaml         recommended level range for each guide, per expansion section
-  layouts/                 templates (home, guide page, 404, partials)
+  layouts/                 templates (home, guide page, 404, partials; Web Analytics in _partials/analytics.html)
   assets/css/main.css      all styles
   assets/js/site.js        theme toggle, search, route-map stepper, copy-to-chat buttons
   assets/js/theme.js       applies a saved light theme before first paint
   assets/logo/logo.png     the logo (built by tools/make_logo.py)
-  static/                  font (Archivo, OFL licence), favicon.ico, apple-touch-icon.png
+  static/                  font (Archivo, OFL licence), favicon.ico, apple-touch-icon.png,
+                           _headers (security and cache headers on Cloudflare)
 Dockerfile, Caddyfile      build with Hugo, serve with Caddy
+wrangler.jsonc             Cloudflare config (used by tools/deploy-cloudflare.sh)
+.github/workflows/         deploy.yml: deploys to Cloudflare on every push to mainline
 compose.yaml               local + dev services
 compose.https.yaml         override for a public HTTPS server
 classic/                   the raw recovered archive (original HTML + images); not deployed
 artist-maps/               unmodified originals of third-party maps (Santiago Reyes); not deployed
 game-maps/                 maps extracted from the WoW Forever client (entrance areas, new-dungeon overviews)
-tools/                     archive downloader, archive-to-Hugo converter, game-file extraction tools, logo builder
+tools/                     archive downloader, archive-to-Hugo converter, game-file extraction tools, logo builder,
+                           Cloudflare deploy script
 REVIEW.md                  guides changed to match WoW Forever that still need checking
 ```
 

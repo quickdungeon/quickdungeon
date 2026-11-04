@@ -3,9 +3,9 @@
 # SITE_ADDRESS decides how Caddy serves the site:
 #   :8080 (default)    plain HTTP on port 8080: local use, or behind a reverse proxy or a
 #                      platform that handles TLS for you
-#   quickdungeon.com   automatic HTTPS via Let's Encrypt on ports 80 and 443. DNS must point
+#   quickdungeon.app   automatic HTTPS via Let's Encrypt on ports 80 and 443. DNS must point
 #                      at this server and /data must be persisted (see compose.https.yaml).
-#                      Several names are allowed: "quickdungeon.com, www.quickdungeon.com"
+#                      Several names are allowed: "quickdungeon.app, www.quickdungeon.app"
 {
 	admin off
 }
@@ -13,12 +13,16 @@
 (static_site) {
 	root * /srv
 	encode zstd gzip
-	file_server
+	file_server {
+		hide _headers
+	}
 
+	# Cloudflare gets the same headers from site/static/_headers: keep the two in step.
+	# The CSP allows Cloudflare Web Analytics (see the analytics partial); nothing else external.
 	header {
 		X-Content-Type-Options "nosniff"
 		Referrer-Policy "strict-origin-when-cross-origin"
-		Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
+		Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
 		Permissions-Policy "camera=(), microphone=(), geolocation=()"
 		-Server
 	}

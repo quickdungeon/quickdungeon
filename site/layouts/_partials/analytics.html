@@ -1,0 +1,7 @@
+{{- /* Cloudflare Web Analytics beacon: only in production builds, and only once
+       params.cloudflareAnalyticsToken is set in hugo.toml. The CSP (site/static/_headers and the
+       Caddyfile) allows its script from static.cloudflareinsights.com and its reports to
+       cloudflareinsights.com. */}}
+{{- with site.Params.cloudflareAnalyticsToken }}{{ if hugo.IsProduction }}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{{ dict "token" . | jsonify }}"></script>
+{{- end }}{{ end }}

@@ -1,0 +1,39 @@
+# Response headers on Cloudflare (Workers static assets; Netlify and Cloudflare Pages read
+# this file too). Cloudflare doesn't serve this file itself. The Docker image sets the same
+# headers in ../../Caddyfile: keep the two in step.
+#
+# Rules that match the same path add up, and a header set by two matching rules is joined
+# with a comma, so each Cache-Control rule below matches a different set of files.
+# Anything not listed (the HTML pages, robots.txt, sitemap.xml) gets Cloudflare's default
+# "public, max-age=0, must-revalidate": browsers check for a new copy every time.
+
+# The CSP allows Cloudflare Web Analytics: its script (static.cloudflareinsights.com) and the
+# reports it sends (cloudflareinsights.com). Nothing else from outside the site.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self' https://static.cloudflareinsights.com; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; base-uri 'self'; form-action 'none'; frame-ancestors 'none'
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Fingerprinted CSS/JS and Hugo-processed images never change: cache for a year.
+# (Every .webp is a Hugo output with a hash in its name. Don't put a plain .webp in static/.)
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+# Original images, icons and the font: cache for a week.
+/*.png
+  Cache-Control: public, max-age=604800
+/*.jpg
+  Cache-Control: public, max-age=604800
+/*.jpeg
+  Cache-Control: public, max-age=604800
+/*.svg
+  Cache-Control: public, max-age=604800
+/*.ico
+  Cache-Control: public, max-age=604800
+/*.woff2
+  Cache-Control: public, max-age=604800

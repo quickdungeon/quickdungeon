@@ -1,0 +1,21 @@
+// Cloudflare hosting: a Worker with static assets only (no Worker code), on the free plan.
+// Deployed by .github/workflows/deploy.yml on every push, or by hand with
+// tools/deploy-cloudflare.sh; see "Host it on Cloudflare" in README.md.
+{
+  "name": "quickdungeon",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    // The built site, exported from the Docker build by tools/deploy-cloudflare.sh.
+    "directory": "./dist",
+    // Unknown URLs get /404.html with a 404 status (Workers doesn't do this by default).
+    "not_found_handling": "404-page",
+    // /deadmines serves /deadmines/index.html after redirecting to /deadmines/, like Caddy.
+    "html_handling": "auto-trailing-slash"
+  },
+
+  // Served at quickdungeon.app (its DNS is on Cloudflare; deploying adds the DNS record and the
+  // HTTPS certificate). The quickdungeon.<you>.workers.dev copy is turned off. To move to
+  // another domain, change the pattern here and baseURL in site/hugo.toml.
+  "routes": [{ "pattern": "quickdungeon.app", "custom_domain": true }],
+  "workers_dev": false,
+}
